@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteBase     /phpbb/
+
+    # fake out phpBB user profile page
+    RewriteCond %{REQUEST_URI} profile.php
+    RewriteCond %{QUERY_STRING} .*mode=viewprofile.*u=([0-9]*)
+    RewriteRule .*  /users/index.php?fHomepage=%1 [R,env=VV_THEME:people,QSA]
+</IfModule>
