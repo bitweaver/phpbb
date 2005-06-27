@@ -12,14 +12,14 @@
 	  <td><span class="genmed"><b>{USERNAME} {L_WROTE}:</b></span></td>
 	</tr>
 	<tr>
-	  <td class="quote"><!-- END quote_username_open -->
+	  <td class="highlight"><!-- END quote_username_open -->
 <!-- BEGIN quote_open --></span>
 <table width="90%" cellspacing="1" cellpadding="3" border="0" align="center">
 <tr> 
 	  <td><span class="genmed"><b>{L_QUOTE}:</b></span></td>
 	</tr>
 	<tr>
-	  <td class="quote"><!-- END quote_open -->
+	  <td class="highlight"><!-- END quote_open -->
 <!-- BEGIN quote_close --></td>
 	</tr>
 </table>
