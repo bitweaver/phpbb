@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_register.php,v 1.1 2005/06/19 04:59:54 bitweaver Exp $
+ *   $Id: usercp_register.php,v 1.1.1.1.2.1 2005/06/28 09:19:58 southpawz Exp $
  *
  *
  ***************************************************************************/
@@ -454,7 +454,8 @@ if ( isset($HTTP_POST_VARS['submit']) )
 	{
 		$avatar_sql = user_avatar_delete($userdata['user_avatar_type'], $userdata['user_avatar']);
 	}
-
+	
+	else 
 	if ( ( !empty($user_avatar_upload) || !empty($user_avatar_name) ) && $board_config['allow_avatar_upload'] )
 	{
 		if ( !empty($user_avatar_upload) )

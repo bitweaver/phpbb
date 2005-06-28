@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: bbcode.php,v 1.1 2005/06/19 04:59:55 bitweaver Exp $
+ *   $Id: bbcode.php,v 1.1.1.1.2.1 2005/06/28 09:19:57 southpawz Exp $
  *
  ***************************************************************************/
 
@@ -207,11 +207,11 @@ function bbencode_second_pass($text, $uid)
 	$replacements[] = $bbcode_tpl['url2'];
 
 	// [url=xxxx://www.phpbb.com]phpBB[/url] code..
-   	$patterns[] = "#\[url=([\w]+?://[^ \"\n\r\t<]*?)\]([^?].*?)\[/url\]#i";
-   	$replacements[] = $bbcode_tpl['url3'];
+   	$patterns[] = "#\[url=([\w]+?://[^ \"\n\r\t<]*?)\]([^?\n\r\t].*?)\[/url\]#is";
+    $replacements[] = $bbcode_tpl['url3'];
 
-   	// [url=www.phpbb.com]phpBB[/url] code.. (no xxxx:// prefix).
-   	$patterns[] = "#\[url=((www|ftp)\.[^ \"\n\r\t<]*?)\]([^?].*?)\[/url\]#i";
+    // [url=www.phpbb.com]phpBB[/url] code.. (no xxxx:// prefix).
+    $patterns[] = "#\[url=((www|ftp)\.[^ \"\n\r\t<]*?)\]([^?\n\r\t].*?)\[/url\]#is";
 	$replacements[] = $bbcode_tpl['url4'];
 
 	// [email]user@domain.tld[/email] code..

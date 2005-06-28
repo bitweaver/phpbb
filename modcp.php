@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: modcp.php,v 1.1 2005/06/19 04:59:48 bitweaver Exp $
+ *   $Id: modcp.php,v 1.1.1.1.2.1 2005/06/28 09:23:28 southpawz Exp $
  *
  ***************************************************************************/
 
@@ -460,6 +460,20 @@ switch( $mode )
 
 			$new_forum_id = intval($HTTP_POST_VARS['new_forum']);
 			$old_forum_id = $forum_id;
+			
+			$sql = 'SELECT forum_id FROM ' . FORUMS_TABLE . '
+            WHERE forum_id = ' . $new_forum_id;
+            if ( !($result = $db->sql_query($sql)) )
+            {
+        	 message_die(GENERAL_ERROR, 'Could not select from forums table', '', __LINE__, __FILE__, $sql);
+            }
+         
+         	if (!$db->sql_fetchrow($result))
+         	{
+             message_die(GENERAL_MESSAGE, 'New forum does not exist');
+         	}
+
+         	$db->sql_freeresult($result);
 
 			if ( $new_forum_id != $old_forum_id )
 			{
@@ -753,6 +767,20 @@ switch( $mode )
 
 				$new_forum_id = intval($HTTP_POST_VARS['new_forum_id']);
 				$topic_time = time();
+				
+				$sql = 'SELECT forum_id FROM ' . FORUMS_TABLE . '
+               	WHERE forum_id = ' . $new_forum_id;
+               	if ( !($result = $db->sql_query($sql)) )
+               	{
+               	 message_die(GENERAL_ERROR, 'Could not select from forums table', '', __LINE__, __FILE__, $sql);
+            	}
+         
+            	if (!$db->sql_fetchrow($result))
+            	{
+               	 message_die(GENERAL_MESSAGE, 'New forum does not exist');
+            	}
+
+            	$db->sql_freeresult($result);
 				
 				$sql  = "INSERT INTO " . TOPICS_TABLE . " (topic_title, topic_poster, topic_time, forum_id, topic_status, topic_type)
 					VALUES ('" . str_replace("\'", "''", $post_subject) . "', $first_poster, " . $topic_time . ", $new_forum_id, " . TOPIC_UNLOCKED . ", " . POST_NORMAL . ")";
