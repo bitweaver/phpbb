@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: install.php,v 1.1 2005/06/19 04:59:50 bitweaver Exp $
+ *   $Id: install.php,v 1.1.1.1.2.1 2005/07/19 13:14:05 hawkgg Exp $
  *
  ***************************************************************************/
 
@@ -192,7 +192,7 @@ function guess_lang()
 		'urdu'						=> 'ur', 
 		'viatnamese'				=> 'vi',
 		'chinese_traditional_taiwan'=> 'zh[_-]tw',
-		'chinese_simplified'		=> 'zh', 
+		'chinese_simplified'		=> 'zh[_-]cn', 
 	);
 
 	if (isset($HTTP_SERVER_VARS['HTTP_ACCEPT_LANGUAGE']))
