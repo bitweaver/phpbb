@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: template_db_cache.php,v 1.1 2005/06/19 04:59:53 bitweaver Exp $
+ *   $Id: template_db_cache.php,v 1.1.1.1.2.1 2005/07/19 20:21:16 southpawz Exp $
  *
  *
  ***************************************************************************/

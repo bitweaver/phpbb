@@ -2,7 +2,7 @@
  phpBB2 PostgreSQL DB schema - phpBB group 2001
 
 
- $Id: postgres_schema.sql,v 1.1 2005/06/19 04:59:51 bitweaver Exp $
+ $Id: postgres_schema.sql,v 1.1.1.1.2.1 2005/07/19 20:21:11 southpawz Exp $
 */
 
 CREATE SEQUENCE phpbb_banlist_id_seq start 1 increment 1 maxvalue 2147483647 minvalue 1 cache 1;

@@ -6,7 +6,7 @@
 *   copyright            : (C) 2002 The phpBB Group 
 *   email                : n/a 
 * 
-*   $Id: dbinformer.php,v 1.1 2005/06/19 04:59:53 bitweaver Exp $ 
+*   $Id: dbinformer.php,v 1.1.1.1.2.1 2005/07/19 20:21:15 southpawz Exp $ 
 * 
 *   Coded by AL, Techie-Micheal, Blade, and Black Fluffy Lion. 
 *   http://www.phpbb.com/phpBB/groupcp.php?g=7330 
