@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: viewtopic.php,v 1.1.1.1.2.2 2005/07/19 19:51:46 southpawz Exp $
+ *   $Id: viewtopic.php,v 1.1.1.1.2.3 2005/07/20 01:31:09 southpawz Exp $
  *
  *
  ***************************************************************************/
@@ -989,8 +989,8 @@ for($i = 0; $i < $total_posts; $i++)
         $quote = '<a href="' . $temp_url . '">' . $lang['Reply_with_quote'] . '</a>';
 
         $temp_url = append_sid("search.$phpEx?search_author=" . urlencode($postrow[$i]['username']) . "&amp;showresults=posts");
-        $search_img = '<a href="' . $temp_url . '"><img src="' . $images['icon_search'] . '" alt="' . $lang['Search_user_posts'] . '" title="' . $lang['Search_user_posts'] . '" border="0" /></a>';
-        $search = '<a href="' . $temp_url . '">' . $lang['Search_user_posts'] . '</a>';
+        $search_img = '<a href="' . $temp_url . '"><img src="' . $images['icon_search'] . '" alt="' . $lang['Search_user_posts'] . '" title="' . sprintf($lang['Search_user_posts'], $postrow[$i]['username']) . '" border="0" /></a>';
+        $search = '<a href="' . $temp_url . '">' . sprintf($lang['Search_user_posts'], $postrow[$i]['username']) . '</a>';
 
         if ( ( $userdata['user_id'] == $poster_id && $is_auth['auth_edit'] ) || $is_auth['auth_mod'] )
         {
