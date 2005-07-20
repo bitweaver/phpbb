@@ -1,7 +1,7 @@
 /*
 * Basic DB data for phpBB2 devel
 *
-* $Id: postgres_basic.sql,v 1.1.1.1.2.1 2005/07/19 20:21:11 southpawz Exp $
+* $Id: postgres_basic.sql,v 1.1.1.1.2.2 2005/07/20 01:18:07 southpawz Exp $
 */
 
 -- Config
@@ -63,7 +63,7 @@ INSERT INTO phpbb_config (config_name, config_value) VALUES ('record_online_date
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('server_name', 'www.yourdomain.tld');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('server_port', '80');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('script_path', '/phpBB2/');
-INSERT INTO phpbb_config (config_name, config_value) VALUES ('version', '.0.16');
+INSERT INTO phpbb_config (config_name, config_value) VALUES ('version', '.0.17');
 
 -- Categories
 INSERT INTO phpbb_categories (cat_id, cat_title, cat_order) VALUES (1, 'Test category 1', 10);

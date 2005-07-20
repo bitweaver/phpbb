@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: update_to_latest.php,v 1.1.1.1.2.1 2005/06/28 09:17:12 southpawz Exp $
+ *   $Id: update_to_latest.php,v 1.1.1.1.2.3 2005/07/20 01:18:40 southpawz Exp $
  *
  ***************************************************************************/
 
@@ -59,7 +59,7 @@ include($phpbb_root_path . 'includes/db.'.$phpEx);
 //
 //
 //
-$updates_to_version = '.0.16';
+$updates_to_version = '.0.17';
 //
 //
 //
