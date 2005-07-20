@@ -1,9 +1,25 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
-    RewriteBase     /phpbb/
+
+	# Defend against possible future exploits: http://www.phpbb.com/phpBB/viewtopic.php?t=308605 and http://www.phpbb.com/phpBB/viewtopic.php?p=1368328#1368328
+	RewriteCond %{QUERY_STRING} ^(.*)\.printf\( [OR]
+	RewriteCond %{QUERY_STRING} ^(.*)wget\%20 [OR]
+	RewriteCond %{QUERY_STRING} ^(.*)echr(.*) [OR]
+	RewriteCond %{QUERY_STRING} ^(.*)esystem(.*) [OR]
+	RewriteCond %{QUERY_STRING} ^(.*)highlight=\%2527 [OR]
+	RewriteCond %{QUERY_STRING} ^(.*)highlight=' [OR]
+	RewriteCond %{HTTP_COOKIE}% s:(.*):\%22test1\%22\%3b
+	RewriteRule ^.*$ http://127.0.0.1/ [L,F]
+
+	RewriteCond %{HTTP_REFERER} (texas\-hold\-em|e\-site|viagra|casino|poker|holdem|pharmacy|e\-buy|cialis|pills)(.*)\.(com|net|org|us|info|biz)   [NC,OR]
+	RewriteCond %{HTTP_REFERER} \.(com|net|org|us|info|biz)\/(online\-poker|texas-holdem|poker|empire\-poker|poker\-rooms)\.html$     [NC,OR]
+	RewriteCond %{HTTP_REFERER} ^http://www.andrewsaluk.com/.*$  [NC,OR]
+	RewriteCond %{HTTP_REFERER} \.(com|net|org|us|info|biz)\/.*(equity|mortgage|consolidation|loan).*\.html$  [NC]
+	RewriteRule ^.*$ http://127.0.0.1/ [L,F] 
 
     # fake out phpBB user profile page
     RewriteCond %{REQUEST_URI} profile.php
     RewriteCond %{QUERY_STRING} .*mode=viewprofile.*u=([0-9]*)
     RewriteRule .*  /users/index.php?fHomepage=%1 [R,env=VV_THEME:people,QSA]
+	
 </IfModule>
