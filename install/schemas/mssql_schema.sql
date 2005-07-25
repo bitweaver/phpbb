@@ -2,7 +2,7 @@
 
   mssql_schema.sql for phpBB2 (c) 2001, phpBB Group
 
- $Id: mssql_schema.sql,v 1.1 2005/06/19 04:59:51 bitweaver Exp $
+ $Id: mssql_schema.sql,v 1.2 2005/07/25 20:02:24 squareing Exp $
 
 */
 

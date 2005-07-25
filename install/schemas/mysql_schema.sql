@@ -1,7 +1,7 @@
 #
 # phpBB2 - MySQL schema
 #
-# $Id: mysql_schema.sql,v 1.1 2005/06/19 04:59:52 bitweaver Exp $
+# $Id: mysql_schema.sql,v 1.2 2005/07/25 20:02:25 squareing Exp $
 #
 
 #

@@ -2,7 +2,7 @@
 
   Basic DB data for phpBB2 devel (MSSQL)
 
- $Id: mssql_basic.sql,v 1.1 2005/06/19 04:59:51 bitweaver Exp $
+ $Id: mssql_basic.sql,v 1.2 2005/07/25 20:02:24 squareing Exp $
 
 */
 
@@ -69,7 +69,7 @@ INSERT INTO phpbb_config (config_name, config_value) VALUES ('record_online_date
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('server_name', 'www.yourdomain.tld');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('server_port', '80');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('script_path', '/phpBB2/');
-INSERT INTO phpbb_config (config_name, config_value) VALUES ('version', '.0.15');
+INSERT INTO phpbb_config (config_name, config_value) VALUES ('version', '.0.17');
 
 /*
   -- Categories

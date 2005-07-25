@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: update_to_latest.php,v 1.2 2005/06/29 05:43:39 spiderr Exp $
+ *   $Id: update_to_latest.php,v 1.3 2005/07/25 20:02:24 squareing Exp $
  *
  ***************************************************************************/
 
@@ -59,7 +59,7 @@ include($phpbb_root_path . 'includes/db.'.$phpEx);
 //
 //
 //
-$updates_to_version = '.0.16';
+$updates_to_version = '.0.17';
 //
 //
 //
