@@ -4,7 +4,7 @@ define ('IN_PHPBB', TRUE);
 $phpbb_root_path = PHPBB_PKG_PATH;
 $phpEx = 'php';
 
-global $smarty, $modlib, $gBitSystem, $gQueryUser, $module_rows, $module_params, $wikilib, $db;
+global $gBitSmarty, $modlib, $gBitSystem, $gQueryUser, $module_rows, $module_params, $wikilib, $db;
 
 // common.php sets up everything we need to acccess the phpbb database
 if( empty( $db ) ) {
@@ -33,12 +33,12 @@ if (!($result = $db->sql_query($sql)) ) {
 }
 
 $forumTopics = $db->sql_fetchrowset($result);
-$smarty->assign_by_ref('forumTopics', $forumTopics);
+$gBitSmarty->assign_by_ref('forumTopics', $forumTopics);
 
 if( $forumSpecific && !empty( $forumTopics[0] ) ) {
 	$linkTitle = '<a href="'.PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'].'">'.$forumTopics[0]['forum_name'].'</a>';
-	$smarty->assign_by_ref('forumTitle', $linkTitle );
-	$smarty->assign( 'forumUrl', PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'] );
+	$gBitSmarty->assign_by_ref('forumTitle', $linkTitle );
+	$gBitSmarty->assign( 'forumUrl', PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'] );
 }
 
 
