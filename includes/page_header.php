@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_header.php,v 1.2 2005/07/10 01:28:45 tinjaw Exp $
+ *   $Id: page_header.php,v 1.3 2005/08/01 18:41:16 squareing Exp $
  *
  *
  ***************************************************************************/
@@ -31,8 +31,7 @@ define('HEADER_INC', TRUE);
 // gzip_compression
 //
 $do_gzip_compress = FALSE;
-$ob_active = ob_get_length () !== FALSE;						// Has the output buffer already been started in bw?
-if ( ( ! $ob_active ) AND $board_config['gzip_compress'] )		// If not already turned due to bw config, then check phpBB config.
+if ( $board_config['gzip_compress'] )
 {
 	$phpver = phpversion();
 
