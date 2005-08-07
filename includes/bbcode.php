@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: bbcode.php,v 1.1.1.1.2.2 2005/07/20 01:22:24 southpawz Exp $
+ *   $Id: bbcode.php,v 1.1.1.1.2.3 2005/08/07 05:52:07 southpawz Exp $
  *
  ***************************************************************************/
 
@@ -30,6 +30,35 @@ define("BBCODE_UID_LEN", 10);
 // that stuff once.
 
 $bbcode_tpl = null;
+
+// MULTI BBCODE-begin
+function Multi_BBCode()
+{
+        global $template, $lang;
+
+        // DO NOT CHANGE THIS ARRAY
+        $hotkeys = array('', 'd', 'e', 'g', 'h', 'j', 'k', 'm', 'n', 'r', 't', 'v', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
+
+        //NOTE: the first element of each array must be ''   Add new elements AFTER the ''
+        $EMBB_widths = array('') ;
+        $EMBB_values = array('') ;
+        for ($i=1; $i<count($EMBB_values); $i++)
+        {
+                // load BBcode MODs info
+                $val = ($i*2)+16 ;
+                $help_lang = ( !empty($lang['bbcode_help'][(strtolower($EMBB_values[$i]))]) ) ? $lang['bbcode_help'][(strtolower($EMBB_values[$i]))] : $lang['bbcode_help'][$EMBB_values[$i]];
+                $template->assign_block_vars('MultiBB', array(
+                        'KEY' => $hotkeys[$i],
+                        'NAME' => "addbbcode$val",
+                        'HELP' => sprintf($help_lang, $hotkeys[$i]),
+                        'WIDTH' => $EMBB_widths[$i],
+                        'VALUE' => $EMBB_values[$i],
+                        'STYLE' => "bbstyle($val)")
+                );
+        }
+}
+// MULTI BBCODE-end
+
 
 /**
  * Loads bbcode templates from the bbcode.tpl file of the current template set.
@@ -108,6 +137,11 @@ function prepare_bbcode_template($bbcode_tpl)
         $bbcode_tpl['url4'] = str_replace('{DESCRIPTION}', '\\3', $bbcode_tpl['url4']);
 
         $bbcode_tpl['email'] = str_replace('{EMAIL}', '\\1', $bbcode_tpl['email']);
+
+        //Bitweaver wiki mod
+        $bbcode_tpl['wiki'] = '\'' . $bbcode_tpl['wiki'] . '\'';
+        $bbcode_tpl['wiki'] = str_replace('{WIKI}', "' . urlencode(str_replace('\\\"', '\"', '\\1')) . '", $bbcode_tpl['wiki']);
+        //End Bitweaver wiki mod
 
         define("BBCODE_TPL_READY", true);
 
@@ -217,6 +251,11 @@ function bbencode_second_pass($text, $uid)
         // [email]user@domain.tld[/email] code..
         $patterns[] = "#\[email\]([a-z0-9&\-_.]+?@[\w\-]+\.([\w\-\.]+\.)?[\w]+)\[/email\]#si";
         $replacements[] = $bbcode_tpl['email'];
+
+        //Begin Bitweaver wiki mod
+        $patterns[] = "#\[wiki\](.*?)\[/wiki\]#ise";
+        $replacements[] = $bbcode_tpl['wiki'];
+        //End Bitweaver wiki mod
 
         $text = preg_replace($patterns, $replacements, $text);
 

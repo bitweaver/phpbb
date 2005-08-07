@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: privmsg.php,v 1.1.1.1.2.1 2005/07/20 01:30:45 southpawz Exp $
+ *   $Id: privmsg.php,v 1.1.1.1.2.2 2005/08/07 05:51:42 southpawz Exp $
  *
  *
  ***************************************************************************/
@@ -1717,6 +1717,9 @@ else if ( $submit || $refresh || $mode != '' )
         // Send smilies to template
         //
         generate_smilies('inline', PAGE_PRIVMSGS);
+        //Begin Bitweaver mod
+        Multi_BBCode();
+        //End Bitweaver mod
 
         $privmsg_subject = preg_replace($html_entities_match, $html_entities_replace, $privmsg_subject);
         $privmsg_subject = str_replace('"', '&quot;', $privmsg_subject);
