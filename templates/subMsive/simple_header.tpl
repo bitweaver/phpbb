@@ -5,7 +5,7 @@
 <html dir="{S_CONTENT_DIRECTION}">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset={S_CONTENT_ENCODING}"  />
-<link rel="stylesheet" title="{$style}" type="text/css" href="{$gBitLoc.styleSheet}" media="all" />
+<link rel="stylesheet" title="{$style}" type="text/css" href="{$gBitSystem->mStyles.styleSheet}" media="all" />
 </head>
 
 <body>

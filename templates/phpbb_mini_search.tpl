@@ -1,5 +1,5 @@
 
-<form action="{$gBitLoc.PHPBB_PKG_URL}search.php" method="POST">
+<form action="{$smarty.const.PHPBB_PKG_URL}search.php" method="POST">
 <input type="hidden" name="search_fields" value="all" />
 
 <input type="text" style="width: 75px" class="post" name="search_keywords" size="30" />		<input class="liteoption" type="submit" value="{tr}Search{/tr}" />
@@ -10,5 +10,5 @@ Match: <input type="radio" name="search_terms" value="any" checked="checked" /> 
 <br/>
 
 </form>
-<a href="{$gBitLoc.PHPBB_PKG_URL}search.php" style="font-size:smaller">{tr}More options{/tr}</a>
+<a href="{$smarty.const.PHPBB_PKG_URL}search.php" style="font-size:smaller">{tr}More options{/tr}</a>
 
