@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_tail.php,v 1.1.1.1.2.2 2005/08/06 18:31:33 lsces Exp $
+ *   $Id: page_tail.php,v 1.1.1.1.2.3 2005/08/08 10:36:44 lsces Exp $
  *
  *
  ***************************************************************************/
@@ -73,7 +73,7 @@ if ( $do_gzip_compress )
 global $gBitPhpBBSubFrame, $gBitSmarty, $gBitSystem, $gBitDbName;
 // hack around php database driver issues when tiki is a different db from bitweaver
 // This will only work on some databases anyway !!!!
-$gBitDb->SelectDB( $gBitDbName );
+$gBitSystem->mDb->mDb->SelectDB( $gBitDbName );
 if( !empty( $gBitPhpBBSubFrame ) ) {
 	$gBitSmarty->display( 'bitpackage:phpbb/bit_phpbb.tpl' );
 } else {
