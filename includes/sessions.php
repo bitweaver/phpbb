@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: sessions.php,v 1.1.1.1.2.1 2005/08/06 18:31:33 lsces Exp $
+ *   $Id: sessions.php,v 1.1.1.1.2.2 2005/08/08 10:04:29 lsces Exp $
  *
  *
  ***************************************************************************/
@@ -405,7 +405,7 @@ function check_bit_user( &$p_user_data ) {
 			}
 			if( empty( $user_row['user_id'] ) ) {
 				$sql = "INSERT INTO ". USERS_TABLE ." (user_id, username, user_regdate, user_password, user_email, user_icq, user_website, user_occ, user_from, user_interests, user_sig, user_sig_bbcode_uid, user_avatar, user_avatar_type, user_viewemail, user_aim, user_yim, user_msnm, user_attachsig, user_allowsmile, user_allowhtml, user_allowbbcode, user_allow_viewonline, user_notify, user_notify_pm, user_popup_pm, user_timezone, user_dateformat, user_lang, user_style, user_level, user_allow_pm, user_active, user_actkey)
-						VALUES ( ".$gBitUser->mInfo['user_id'].", ".$gBitSystem->qstr( $gBitUser->mInfo['login'], get_magic_quotes_gpc() ).", ".strtotime('now').", ".$gBitSystem->qstr( $phpbb_password, get_magic_quotes_gpc() ).", '".$gBitUser->mInfo['email']."',
+						VALUES ( ".$gBitUser->mInfo['user_id'].", ".$gBitSystem-mDb->qstr( $gBitUser->mInfo['login'], get_magic_quotes_gpc() ).", ".strtotime('now').", ".$gBitSystem-mDb->qstr( $phpbb_password, get_magic_quotes_gpc() ).", '".$gBitUser->mInfo['email']."',
 					NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, 0, 1, 0, 1, 0, 0, 1, 1, 0, 'd M Y h:i a', 'english', 1, ".(int)$gBitUser->isAdmin().", 0, 1, NULL)";
 
 				if ( !($result = $db->sql_query($sql)) )
@@ -419,7 +419,7 @@ function check_bit_user( &$p_user_data ) {
 					|| ($user_row['username'] != $gBitUser->mInfo['login'])
 				)
 				{
-					$sql = "UPDATE ". USERS_TABLE ." SET username=".$gBitSystem->qstr( $gBitUser->mInfo['login'], get_magic_quotes_gpc() ).", user_email = ".$gBitSystem->qstr( $gBitUser->mInfo['email'], get_magic_quotes_gpc() ).", user_password=".$gBitSystem->qstr( $phpbb_password, get_magic_quotes_gpc() )."
+					$sql = "UPDATE ". USERS_TABLE ." SET username=".$gBitSystem-mDb->qstr( $gBitUser->mInfo['login'], get_magic_quotes_gpc() ).", user_email = ".$gBitSystem-mDb->qstr( $gBitUser->mInfo['email'], get_magic_quotes_gpc() ).", user_password=".$gBitSystem-mDb->qstr( $phpbb_password, get_magic_quotes_gpc() )."
 							WHERE  user_id = ".$user_row['user_id'];
 					if ( !($result = $db->sql_query($sql)) )
 					{
