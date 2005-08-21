@@ -1,4 +1,4 @@
-{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_posts.tpl,v 1.1.1.1.2.1 2005/08/05 23:00:04 squareing Exp $ *}
+{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_posts.tpl,v 1.1.1.1.2.2 2005/08/21 19:16:11 squareing Exp $ *}
 {if $forumPosts || $showEmpty}
 {assign var="moduleTitle" value="{tr}Recent Forum Posts{/tr}"}
 {if $forumTitle}
@@ -16,7 +16,7 @@
 						{$forumPosts[ix].topic_title} {** If the poster did not give a title to their post we will display the title of the thread they posted in **}
 					{/if}
 				</a>
-				{if !$forumTitle}
+				{if !$forumTitle and $show_forum_name}
 					<br /><span class="small">in <a class="communityCreator" href="{$smarty.const.PHPBB_PKG_URL}viewforum.php?f={$forumPosts[ix].forum_id}">{$forumPosts[ix].forum_name}</a></span>
 				{/if}
 			</li>
