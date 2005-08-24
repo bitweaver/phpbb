@@ -20,6 +20,11 @@ if( !empty( $module_params['f'] ) || !empty( $module_params['forum'] ) ) {
 	$forumSpecific = TRUE;
 }
 
+// only show forum name if desired.
+if( !empty( $module_params['show_form_name'] ) ) {
+	$gBitSmarty->assign( 'show_forum_name', TRUE );
+}
+
 if( !empty( $gQueryUser->mUserId ) ) {
 	$whereSql .= ' AND p.poster_id='.$gQueryUser->mUserId;
 }
