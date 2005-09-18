@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: mysql.php,v 1.1 2005/06/19 04:59:54 bitweaver Exp $
+ *   $Id: mysql.php,v 1.1.1.1.2.1 2005/09/18 18:02:17 spiderr Exp $
  *
  ***************************************************************************/
 
@@ -98,6 +98,11 @@ class sql_db
 	//
 	function sql_query($query = "", $transaction = FALSE)
 	{
+		// {{{ BIT_MOD
+		// This is necessary for the module queries to run if bitweaver and phpBB are running in different DB's
+		$dbselect = mysql_select_db($this->dbname);
+		// }}} BIT_MOD
+
 		// Remove any pre-existing queries
 		unset($this->query_result);
 		if($query != "")
