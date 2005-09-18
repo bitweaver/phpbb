@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : supportphpbb.com
  *
- *   $Id: mysql4.php,v 1.1 2005/06/19 04:59:54 bitweaver Exp $
+ *   $Id: mysql4.php,v 1.1.1.1.2.1 2005/09/18 18:44:49 spiderr Exp $
  *
  ***************************************************************************/
 
@@ -140,7 +140,7 @@ class sql_db
 					return false;
 				}
 			}
-			
+
 			return $this->query_result;
 		}
 		else
