@@ -28,9 +28,8 @@ if( defined( 'PHPBB_INSTALLED' ) ) {
 			WHERE f.forum_id = t.forum_id $whereSql
 			ORDER BY t.topic_time DESC
 			LIMIT $module_rows;";
-vd( $db->db_connect_id );
+
 	if (!($result = $db->sql_query($sql)) ) {
-vd( mysql_error() );
 		print("Unable to query forum posts: $sql");
 	}
 
