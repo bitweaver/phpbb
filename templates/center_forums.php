@@ -31,7 +31,10 @@ if( !empty( $_REQUEST['f'] ) ) {
 	$forum_id = $_REQUEST['f'];
 } elseif( !empty( $_REQUEST['forum'] ) ) {
 	$forum_id = $_REQUEST['forum'];
+} elseif( $gBitUser->getPreference( 'phpbb_owner_forum_id' ) ) {
+	$forum_id = $gBitUser->getPreference( 'phpbb_owner_forum_id' );
 } else {
+	// a hack for now...
 	$forum_id = 1;
 }
 
