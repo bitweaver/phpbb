@@ -6,33 +6,22 @@ $phpEx = 'php';
 
 global $gBitSmarty, $modlib, $gBitSystem, $gQueryUser, $module_rows, $module_params, $wikilib, $db;
 
-// common.php sets up everything we need to acccess the phpbb database
-if( empty( $db ) ) {
-	require_once( PHPBB_PKG_PATH.'common.php');
-}
-
-$whereSql = '';
+require_once( PHPBB_PKG_PATH.'phpbb_lib.php' );
 $forumSpecific = FALSE;
-if( !empty( $module_params['f'] ) || !empty( $module_params['forum'] ) ) {
-	$whereSql = ' AND f.forum_id='.$module_params['f'];
+
+$listHash['max_records'] = $module_rows;
+if( !empty( $module_params['f'] ) ) {
+	$listHash['forum_id'] = $module_params['f'];
+	$forumSpecific = TRUE;
+} elseif( !empty( $module_params['forum'] ) ) {
+	$listHash['forum_id'] = $module_params['forum'];
 	$forumSpecific = TRUE;
 }
-
 if( !empty( $gQueryUser->mUserId ) ) {
-	$whereSql .= ' AND t.topic_poster='.$gQueryUser->mUserId;
+	$listHash['user_id'] = $gQueryUser->mUserId;
 }
 
-$sql = "SELECT t.topic_title, t.topic_id, f.forum_name, f.forum_id
-		FROM ".FORUMS_TABLE." f, ".TOPICS_TABLE." t
-		WHERE f.forum_id = t.forum_id $whereSql
-		ORDER BY t.topic_time DESC
-		LIMIT $module_rows;";
-
-if (!($result = $db->sql_query($sql)) ) {
-	print("Unable to query forum posts: $sql");
-}
-
-$forumTopics = $db->sql_fetchrowset($result);
+$forumTopics = $phpbbLib->getListTopics( $listHash );
 $gBitSmarty->assign_by_ref('forumTopics', $forumTopics);
 
 if( $forumSpecific && !empty( $forumTopics[0] ) ) {
