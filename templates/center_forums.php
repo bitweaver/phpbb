@@ -1,7 +1,7 @@
 <?php
 
 define('IN_PHPBB', true);
-global $gBitUser, $phpbb_root_path, $HTTP_GET_VARS, $HTTP_COOKIE_VARS, $db, $phpEx, $board_config, $template, $current_template_images, $images, $forum_moderators, $lang;
+global $gBitUser, $gQueryUser, $phpbb_root_path, $HTTP_GET_VARS, $HTTP_COOKIE_VARS, $db, $phpEx, $board_config, $template, $current_template_images, $images, $forum_moderators, $lang;
 $phpbb_root_path = PHPBB_PKG_PATH;
 
 require_once( PHPBB_PKG_PATH.'phpbb_lib.php' );
@@ -31,13 +31,12 @@ if( !empty( $_REQUEST['f'] ) ) {
 	$forum_id = $_REQUEST['f'];
 } elseif( !empty( $_REQUEST['forum'] ) ) {
 	$forum_id = $_REQUEST['forum'];
-} elseif( $gBitUser->getPreference( 'phpbb_owner_forum_id' ) ) {
-	$forum_id = $gBitUser->getPreference( 'phpbb_owner_forum_id' );
+} elseif( is_object( $gQueryUser ) && $gQueryUser->getPreference( 'phpbb_owner_forum_id' ) ) {
+	$forum_id = $gQueryUser->getPreference( 'phpbb_owner_forum_id' );
 } else {
 	// a hack for now...
 	$forum_id = 1;
 }
-
 
 //
 // Check if the user has actually sent a forum ID with his/her request
