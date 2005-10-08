@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_tail.php,v 1.4 2005/08/11 13:03:46 squareing Exp $
+ *   $Id: page_tail.php,v 1.5 2005/10/08 16:46:13 spiderr Exp $
  *
  *
  ***************************************************************************/
@@ -77,7 +77,7 @@ $gBitSystem->mDb->mDb->SelectDB( $gBitDbName );
 if( !empty( $gBitPhpBBSubFrame ) ) {
 	$gBitSmarty->display( 'bitpackage:phpbb/bit_phpbb.tpl' );
 } else {
-	$gBitSystem->display( 'bitpackage:phpbb/bit_phpbb.tpl' );
+	$gBitSystem->display( 'bitpackage:phpbb/bit_phpbb.tpl', $page_title );
 }
 
 //
