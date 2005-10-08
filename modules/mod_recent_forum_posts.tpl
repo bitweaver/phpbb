@@ -1,4 +1,4 @@
-{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_posts.tpl,v 1.1.1.1.2.2 2005/08/21 19:16:11 squareing Exp $ *}
+{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_posts.tpl,v 1.1.1.1.2.3 2005/10/08 11:27:30 squareing Exp $ *}
 {if $forumPosts || $showEmpty}
 {assign var="moduleTitle" value="{tr}Recent Forum Posts{/tr}"}
 {if $forumTitle}
@@ -6,7 +6,7 @@
 {/if}
 {strip}
 {bitmodule title="$moduleTitle" name="recent_forum_posts"}
-	<ol class="phpbb">
+	<ol>
 		{section name=ix loop=$forumPosts}
 			<li>
 				<a class="communityTitle" href="{$smarty.const.PHPBB_PKG_URL}viewtopic.php?t={$forumPosts[ix].topic_id}">
