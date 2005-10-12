@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: mysql.php,v 1.1 2005/06/19 04:59:54 bitweaver Exp $
+ *   $Id: mysql.php,v 1.2 2005/10/12 15:13:53 spiderr Exp $
  *
  ***************************************************************************/
 
@@ -98,6 +98,14 @@ class sql_db
 	//
 	function sql_query($query = "", $transaction = FALSE)
 	{
+		// {{{ BIT_MOD
+		global $gBitDbName;
+		if( $this->dbname != $gBitDbName ) {
+			// This is necessary for the module queries to run if bitweaver and phpBB are running in different DB's
+			$dbselect = mysql_select_db($this->dbname);
+		}
+		// }}} BIT_MOD
+
 		// Remove any pre-existing queries
 		unset($this->query_result);
 		if($query != "")
@@ -105,6 +113,12 @@ class sql_db
 			$this->num_queries++;
 
 			$this->query_result = @mysql_query($query, $this->db_connect_id);
+			// {{{ BIT_MOD
+			if( $this->dbname != $gBitDbName ) {
+				// This is necessary for the module queries to run if bitweaver and phpBB are running in different DB's
+				$dbselect = mysql_select_db($gBitDbName);
+			}
+			// }}} BIT_MOD
 		}
 		if($this->query_result)
 		{
@@ -116,6 +130,7 @@ class sql_db
 		{
 			return ( $transaction == END_TRANSACTION ) ? true : false;
 		}
+
 	}
 
 	//

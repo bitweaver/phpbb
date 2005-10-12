@@ -1,18 +1,11 @@
-/*
-TikiPro!
-*/
+.phpbb th { background-color:#ffffff; border: solid #999999 1px; color:#323232; font-variant:small-caps; }
 
-font,th,td,p { font-family: Verdana, Arial, Helvetica, sans-serif }
+.phpbb td.catLeft { background-color:#E5E5E5; border: solid #999999 1px; font-variant:small-caps; } /*F3F3F3*/
+.phpbb .cattitle { font-variant:small-caps; }
 
+.phpbb td.odd { background-color:#F3F3F3; border: solid #999999 1px; }
+.phpbb td.even { background-color:#F3F3F3; border: solid #999999 1px; }
 
-th { background-color:#ffffff; border: solid #999999 1px; color:#323232; font-variant:small-caps; }
-
-td.catLeft { background-color:#E5E5E5; border: solid #999999 1px; font-variant:small-caps; } /*F3F3F3*/
-.cattitle { font-variant:small-caps; }
-
-td.odd { background-color:#F3F3F3; border: solid #999999 1px; }
-td.even { background-color:#F3F3F3; border: solid #999999 1px; }
-
-.genmed { font-style:italic; color:#555555; }
-.quote { background-color: #FFFFFF; border: solid #AFAFAF 1px; }
-.code { background-color: #FFFFFF; border: solid #AFAFAF 1px; }
+.phpbb .genmed { font-style:italic; color:#555555; }
+.phpbb .quote { background-color: #FFFFFF; border: solid #AFAFAF 1px; }
+.phpbb .code { background-color: #FFFFFF; border: solid #AFAFAF 1px; }

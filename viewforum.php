@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: viewforum.php,v 1.2 2005/10/01 18:54:40 spiderr Exp $
+ *   $Id: viewforum.php,v 1.3 2005/10/12 15:13:53 spiderr Exp $
  *
  *
  ***************************************************************************/
@@ -123,8 +123,8 @@ if ( $mark_read == 'topics' )
 {
 	if ( $userdata['session_logged_in'] )
 	{
-		$sql = "SELECT MAX(post_time) AS last_post
-			FROM " . POSTS_TABLE . "
+		$sql = "SELECT MAX(post_time) AS last_post 
+			FROM " . POSTS_TABLE . " 
 			WHERE forum_id = $forum_id";
 		if ( !($result = $db->sql_query($sql)) )
 		{
@@ -185,15 +185,15 @@ if ( $is_auth['auth_mod'] && $board_config['prune_enable'] )
 // Obtain list of moderators of each forum
 // First users, then groups ... broken into two queries
 //
-$sql = "SELECT u.user_id, u.username
+$sql = "SELECT u.user_id, u.username 
 	FROM " . AUTH_ACCESS_TABLE . " aa, " . USER_GROUP_TABLE . " ug, " . GROUPS_TABLE . " g, " . USERS_TABLE . " u
-	WHERE aa.forum_id = $forum_id
-		AND aa.auth_mod = " . TRUE . "
+	WHERE aa.forum_id = $forum_id 
+		AND aa.auth_mod = " . TRUE . " 
 		AND g.group_single_user = 1
-		AND ug.group_id = aa.group_id
-		AND g.group_id = aa.group_id
-		AND u.user_id = ug.user_id
-	GROUP BY u.user_id, u.username
+		AND ug.group_id = aa.group_id 
+		AND g.group_id = aa.group_id 
+		AND u.user_id = ug.user_id 
+	GROUP BY u.user_id, u.username  
 	ORDER BY u.user_id";
 if ( !($result = $db->sql_query($sql)) )
 {
@@ -206,15 +206,15 @@ while( $row = $db->sql_fetchrow($result) )
 	$moderators[] = '<a href="' . append_sid("profile.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . "=" . $row['user_id']) . '">' . $row['username'] . '</a>';
 }
 
-$sql = "SELECT g.group_id, g.group_name
-	FROM " . AUTH_ACCESS_TABLE . " aa, " . USER_GROUP_TABLE . " ug, " . GROUPS_TABLE . " g
+$sql = "SELECT g.group_id, g.group_name 
+	FROM " . AUTH_ACCESS_TABLE . " aa, " . USER_GROUP_TABLE . " ug, " . GROUPS_TABLE . " g 
 	WHERE aa.forum_id = $forum_id
-		AND aa.auth_mod = " . TRUE . "
+		AND aa.auth_mod = " . TRUE . " 
 		AND g.group_single_user = 0
 		AND g.group_type <> ". GROUP_HIDDEN ."
-		AND ug.group_id = aa.group_id
-		AND g.group_id = aa.group_id
-	GROUP BY g.group_id, g.group_name
+		AND ug.group_id = aa.group_id 
+		AND g.group_id = aa.group_id 
+	GROUP BY g.group_id, g.group_name  
 	ORDER BY g.group_id";
 if ( !($result = $db->sql_query($sql)) )
 {
@@ -225,7 +225,7 @@ while( $row = $db->sql_fetchrow($result) )
 {
 	$moderators[] = '<a href="' . append_sid("groupcp.$phpEx?" . POST_GROUPS_URL . "=" . $row['group_id']) . '">' . $row['group_name'] . '</a>';
 }
-
+	
 $l_moderators = ( count($moderators) == 1 ) ? $lang['Moderator'] : $lang['Moderators'];
 $forum_moderators = ( count($moderators) ) ? implode(', ', $moderators) : $lang['None'];
 unset($moderators);
@@ -243,11 +243,11 @@ if ( !empty($HTTP_POST_VARS['topicdays']) || !empty($HTTP_GET_VARS['topicdays'])
 	$topic_days = ( !empty($HTTP_POST_VARS['topicdays']) ) ? intval($HTTP_POST_VARS['topicdays']) : intval($HTTP_GET_VARS['topicdays']);
 	$min_topic_time = time() - ($topic_days * 86400);
 
-	$sql = "SELECT COUNT(t.topic_id) AS forum_topics
-		FROM " . TOPICS_TABLE . " t, " . POSTS_TABLE . " p
-		WHERE t.forum_id = $forum_id
+	$sql = "SELECT COUNT(t.topic_id) AS forum_topics 
+		FROM " . TOPICS_TABLE . " t, " . POSTS_TABLE . " p 
+		WHERE t.forum_id = $forum_id 
 			AND p.post_id = t.topic_last_post_id
-			AND p.post_time >= $min_topic_time";
+			AND p.post_time >= $min_topic_time"; 
 
 	if ( !($result = $db->sql_query($sql)) )
 	{
@@ -286,11 +286,11 @@ $select_topic_days .= '</select>';
 //
 $sql = "SELECT t.*, u.username, u.user_id, u2.username as user2, u2.user_id as id2, p.post_time, p.post_username
 	FROM " . TOPICS_TABLE . " t, " . USERS_TABLE . " u, " . POSTS_TABLE . " p, " . USERS_TABLE . " u2
-	WHERE t.forum_id = $forum_id
+	WHERE t.forum_id = $forum_id 
 		AND t.topic_poster = u.user_id
 		AND p.post_id = t.topic_last_post_id
 		AND p.poster_id = u2.user_id
-		AND t.topic_type = " . POST_ANNOUNCE . "
+		AND t.topic_type = " . POST_ANNOUNCE . " 
 	ORDER BY t.topic_last_post_id DESC ";
 if ( !($result = $db->sql_query($sql)) )
 {
@@ -311,16 +311,16 @@ $db->sql_freeresult($result);
 // Grab all the basic data (all topics except announcements)
 // for this forum
 //
-$sql = "SELECT t.*, u.username, u.user_id, u2.username as user2, u2.user_id as id2, p.post_username, p2.post_username AS post_username2, p2.post_time
+$sql = "SELECT t.*, u.username, u.user_id, u2.username as user2, u2.user_id as id2, p.post_username, p2.post_username AS post_username2, p2.post_time 
 	FROM " . TOPICS_TABLE . " t, " . USERS_TABLE . " u, " . POSTS_TABLE . " p, " . POSTS_TABLE . " p2, " . USERS_TABLE . " u2
 	WHERE t.forum_id = $forum_id
 		AND t.topic_poster = u.user_id
 		AND p.post_id = t.topic_first_post_id
 		AND p2.post_id = t.topic_last_post_id
-		AND u2.user_id = p2.poster_id
-		AND t.topic_type <> " . POST_ANNOUNCE . "
+		AND u2.user_id = p2.poster_id 
+		AND t.topic_type <> " . POST_ANNOUNCE . " 
 		$limit_topics_time
-	ORDER BY t.topic_type DESC, t.topic_last_post_id DESC
+	ORDER BY t.topic_type DESC, t.topic_last_post_id DESC 
 	LIMIT $start, ".$board_config['topics_per_page'];
 if ( !($result = $db->sql_query($sql)) )
 {
@@ -415,23 +415,23 @@ $template->assign_vars(array(
 	'L_REPLIES' => $lang['Replies'],
 	'L_VIEWS' => $lang['Views'],
 	'L_POSTS' => $lang['Posts'],
-	'L_LASTPOST' => $lang['Last_Post'],
-	'L_MODERATOR' => $l_moderators,
-	'L_MARK_TOPICS_READ' => $lang['Mark_all_topics'],
-	'L_POST_NEW_TOPIC' => ( $forum_row['forum_status'] == FORUM_LOCKED ) ? $lang['Forum_locked'] : $lang['Post_new_topic'],
+	'L_LASTPOST' => $lang['Last_Post'], 
+	'L_MODERATOR' => $l_moderators, 
+	'L_MARK_TOPICS_READ' => $lang['Mark_all_topics'], 
+	'L_POST_NEW_TOPIC' => ( $forum_row['forum_status'] == FORUM_LOCKED ) ? $lang['Forum_locked'] : $lang['Post_new_topic'], 
 	'L_NO_NEW_POSTS' => $lang['No_new_posts'],
 	'L_NEW_POSTS' => $lang['New_posts'],
-	'L_NO_NEW_POSTS_LOCKED' => $lang['No_new_posts_locked'],
-	'L_NEW_POSTS_LOCKED' => $lang['New_posts_locked'],
+	'L_NO_NEW_POSTS_LOCKED' => $lang['No_new_posts_locked'], 
+	'L_NEW_POSTS_LOCKED' => $lang['New_posts_locked'], 
 	'L_NO_NEW_POSTS_HOT' => $lang['No_new_posts_hot'],
 	'L_NEW_POSTS_HOT' => $lang['New_posts_hot'],
-	'L_ANNOUNCEMENT' => $lang['Post_Announcement'],
-	'L_STICKY' => $lang['Post_Sticky'],
+	'L_ANNOUNCEMENT' => $lang['Post_Announcement'], 
+	'L_STICKY' => $lang['Post_Sticky'], 
 	'L_POSTED' => $lang['Posted'],
 	'L_JOINED' => $lang['Joined'],
 	'L_AUTHOR' => $lang['Author'],
 
-	'S_AUTH_LIST' => $s_auth_can,
+	'S_AUTH_LIST' => $s_auth_can, 
 
 	'U_VIEW_FORUM' => append_sid("viewforum.$phpEx?" . POST_FORUM_URL ."=$forum_id"),
 
@@ -466,14 +466,14 @@ if( $total_topics )
 		}
 		else
 		{
-			$topic_type = '';
+			$topic_type = '';		
 		}
 
 		if( $topic_rowset[$i]['topic_vote'] )
 		{
 			$topic_type .= $lang['Topic_Poll'] . ' ';
 		}
-
+		
 		if( $topic_rowset[$i]['topic_status'] == TOPIC_MOVED )
 		{
 			$topic_type = $lang['Topic_Moved'] . ' ';
@@ -517,7 +517,7 @@ if( $total_topics )
 			$newest_post_img = '';
 			if( $userdata['session_logged_in'] )
 			{
-				if( $topic_rowset[$i]['post_time'] > $userdata['user_lastvisit'] )
+				if( $topic_rowset[$i]['post_time'] > $userdata['user_lastvisit'] ) 
 				{
 					if( !empty($tracking_topics) || !empty($tracking_forums) || isset($HTTP_COOKIE_VARS[$board_config['cookie_name'] . '_f_all']) )
 					{
@@ -570,7 +570,7 @@ if( $total_topics )
 						$newest_post_img = '<a href="' . append_sid("viewtopic.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;view=newest") . '"><img src="' . $images['icon_newest_reply'] . '" alt="' . $lang['View_newest_post'] . '" title="' . $lang['View_newest_post'] . '" border="0" /></a> ';
 					}
 				}
-				else
+				else 
 				{
 					$folder_image = $folder;
 					$folder_alt = ( $topic_rowset[$i]['topic_status'] == TOPIC_LOCKED ) ? $lang['Topic_locked'] : $lang['No_new_posts'];
@@ -614,7 +614,7 @@ if( $total_topics )
 		{
 			$goto_page = '';
 		}
-
+		
 		$view_topic_url = append_sid("viewtopic.$phpEx?" . POST_TOPIC_URL . "=$topic_id");
 
 		$topic_author = ( $topic_rowset[$i]['user_id'] != ANONYMOUS ) ? '<a href="' . append_sid("profile.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . '=' . $topic_rowset[$i]['user_id']) . '">' : '';
@@ -631,7 +631,7 @@ if( $total_topics )
 		$last_post_url = '<a href="' . append_sid("viewtopic.$phpEx?"  . POST_POST_URL . '=' . $topic_rowset[$i]['topic_last_post_id']) . '#' . $topic_rowset[$i]['topic_last_post_id'] . '"><img src="' . $images['icon_latest_reply'] . '" alt="' . $lang['View_latest_post'] . '" title="' . $lang['View_latest_post'] . '" border="0" /></a>';
 
 		$views = $topic_rowset[$i]['topic_views'];
-
+		
 		$row_color = ( !($i % 2) ) ? $theme['td_color1'] : $theme['td_color2'];
 		$row_class = ( !($i % 2) ) ? $theme['td_class1'] : $theme['td_class2'];
 
@@ -640,20 +640,20 @@ if( $total_topics )
 			'ROW_CLASS' => $row_class,
 			'FORUM_ID' => $forum_id,
 			'TOPIC_ID' => $topic_id,
-			'TOPIC_FOLDER_IMG' => $folder_image,
-			'TOPIC_AUTHOR' => $topic_author,
+			'TOPIC_FOLDER_IMG' => $folder_image, 
+			'TOPIC_AUTHOR' => $topic_author, 
 			'GOTO_PAGE' => $goto_page,
 			'REPLIES' => $replies,
-			'NEWEST_POST_IMG' => $newest_post_img,
+			'NEWEST_POST_IMG' => $newest_post_img, 
 			'TOPIC_TITLE' => $topic_title,
 			'TOPIC_TYPE' => $topic_type,
 			'VIEWS' => $views,
-			'FIRST_POST_TIME' => $first_post_time,
-			'LAST_POST_TIME' => $last_post_time,
-			'LAST_POST_AUTHOR' => $last_post_author,
-			'LAST_POST_IMG' => $last_post_url,
+			'FIRST_POST_TIME' => $first_post_time, 
+			'LAST_POST_TIME' => $last_post_time, 
+			'LAST_POST_AUTHOR' => $last_post_author, 
+			'LAST_POST_IMG' => $last_post_url, 
 
-			'L_TOPIC_FOLDER_ALT' => $folder_alt,
+			'L_TOPIC_FOLDER_ALT' => $folder_alt, 
 
 			'U_VIEW_TOPIC' => $view_topic_url)
 		);
@@ -663,7 +663,7 @@ if( $total_topics )
 
 	$template->assign_vars(array(
 		'PAGINATION' => generate_pagination("viewforum.$phpEx?" . POST_FORUM_URL . "=$forum_id&amp;topicdays=$topic_days", $topics_count, $board_config['topics_per_page'], $start),
-		'PAGE_NUMBER' => sprintf($lang['Page_of'], ( floor( $start / $board_config['topics_per_page'] ) + 1 ), ceil( $topics_count / $board_config['topics_per_page'] )),
+		'PAGE_NUMBER' => sprintf($lang['Page_of'], ( floor( $start / $board_config['topics_per_page'] ) + 1 ), ceil( $topics_count / $board_config['topics_per_page'] )), 
 
 		'L_GOTO_PAGE' => $lang['Goto_page'])
 	);
