@@ -1,4 +1,4 @@
-{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_posts.tpl,v 1.4 2005/10/12 15:13:54 spiderr Exp $ *}
+{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_posts.tpl,v 1.5 2005/10/29 17:55:31 squareing Exp $ *}
 {if $forumPosts || $showEmpty}
 {assign var="moduleTitle" value="{tr}Recent Forum Posts{/tr}"}
 {if $forumTitle}
@@ -25,7 +25,7 @@
 		{/section}
 	</ol>
 	{if $forumPosts}
-		<a href="{$forumUrl}">{tr}View More{/tr}&raquo;</a>
+		<a href="{$forumUrl|default:$smarty.const.PHPBB_PKG_URL}">{tr}View More{/tr}&raquo;</a>
 	{/if}
 {/bitmodule}
 {/strip}
