@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_footer_admin.php,v 1.1 2005/06/19 05:00:02 bitweaver Exp $
+ *   $Id: page_footer_admin.php,v 1.1.1.1.2.1 2006/01/02 09:44:49 squareing Exp $
  *
  *
  ***************************************************************************/
@@ -25,6 +25,8 @@ if ( !defined('IN_PHPBB') )
 	die("Hacking attempt");
 }
 
+global $do_gzip_compress;
+
 //
 // Show the overall footer.
 //
@@ -33,9 +35,8 @@ $template->set_filenames(array(
 );
 
 $template->assign_vars(array(
-	'PHPBB_VERSION' => ($userdata['user_level'] == ADMIN && $userdata['user_id'] != ANONYMOUS) ? '2' . $board_config['version'] : '',
-
-	'TRANSLATION_INFO' => $lang['TRANSLATION_INFO'])
+	'PHPBB_VERSION' => ($userdata['user_level'] == ADMIN && $userdata['user_id'] != ANONYMOUS) ? '2' . $board_config['version'] : '', 
+	'TRANSLATION_INFO' => (isset($lang['TRANSLATION_INFO'])) ? $lang['TRANSLATION_INFO'] : ((isset($lang['TRANSLATION'])) ? $lang['TRANSLATION'] : ''))
 );
 
 $template->pparse('page_footer');

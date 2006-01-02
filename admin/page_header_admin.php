@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_header_admin.php,v 1.1 2005/06/19 05:00:02 bitweaver Exp $
+ *   $Id: page_header_admin.php,v 1.1.1.1.2.1 2006/01/02 09:44:49 squareing Exp $
  *
  *
  ***************************************************************************/

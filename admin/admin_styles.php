@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_styles.php,v 1.1 2005/06/19 05:00:02 bitweaver Exp $
+ *   $Id: admin_styles.php,v 1.1.1.1.2.1 2006/01/02 09:44:49 squareing Exp $
  *
  *
  ***************************************************************************/
@@ -27,7 +27,7 @@ if( !empty($setmodules) )
 	$file = basename(__FILE__);
 	$module['Styles']['Add_new'] = "$file?mode=addnew";
 	$module['Styles']['Create_new'] = "$file?mode=create";
-	$module['Styles']['Manage'] = "$file";
+	$module['Styles']['Manage'] = $file;
 	$module['Styles']['Export'] = "$file?mode=export";
 	return;
 }
@@ -75,7 +75,7 @@ switch( $mode )
 		if( isset($install_to) )
 		{
 
-         		include($phpbb_root_path. "templates/" . basename($install_to) . "/theme_info.cfg");
+			include($phpbb_root_path. "templates/" . basename($install_to) . "/theme_info.cfg");
 
 			$template_name = $$install_to;
 			$found = FALSE; 
@@ -582,6 +582,7 @@ switch( $mode )
 				"L_SIMPLE_NAME" => $lang['Simple_name'],
 				"L_VALUE" => $lang['Value'],
 				"L_STYLESHEET" => $lang['Stylesheet'],
+				"L_STYLESHEET_EXPLAIN" => $lang['Stylesheet_explain'],
 				"L_BACKGROUND_IMAGE" => $lang['Background_image'],
 				"L_BACKGROUND_COLOR" => $lang['Background_color'],
 				"L_BODY_TEXT_COLOR" => $lang['Text_color'],

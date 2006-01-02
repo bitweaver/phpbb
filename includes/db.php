@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: db.php,v 1.1 2005/06/19 04:59:54 bitweaver Exp $
+ *   $Id: db.php,v 1.1.1.1.2.1 2006/01/02 09:44:50 squareing Exp $
  *
  *
  ***************************************************************************/
@@ -60,7 +60,7 @@ switch($dbms)
 $db = new sql_db($dbhost, $dbuser, $dbpasswd, $dbname, false);
 if(!$db->db_connect_id)
 {
-   message_die(CRITICAL_ERROR, "Could not connect to the database");
+	message_die(CRITICAL_ERROR, "Could not connect to the database");
 }
 
 ?>

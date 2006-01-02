@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_forums.php,v 1.1 2005/06/19 05:00:01 bitweaver Exp $
+ *   $Id: admin_forums.php,v 1.1.1.1.2.1 2006/01/02 09:44:49 squareing Exp $
  *
  ***************************************************************************/
 
@@ -37,15 +37,15 @@ require('./pagestart.' . $phpEx);
 include($phpbb_root_path . 'includes/functions_admin.'.$phpEx);
 
 $forum_auth_ary = array(
-	"auth_view" => AUTH_ALL,
-	"auth_read" => AUTH_ALL,
-	"auth_post" => AUTH_ALL,
-	"auth_reply" => AUTH_ALL,
-	"auth_edit" => AUTH_REG,
-	"auth_delete" => AUTH_REG,
-	"auth_sticky" => AUTH_MOD,
-	"auth_announce" => AUTH_MOD,
-	"auth_vote" => AUTH_REG,
+	"auth_view" => AUTH_ALL, 
+	"auth_read" => AUTH_ALL, 
+	"auth_post" => AUTH_ALL, 
+	"auth_reply" => AUTH_ALL, 
+	"auth_edit" => AUTH_REG, 
+	"auth_delete" => AUTH_REG, 
+	"auth_sticky" => AUTH_MOD, 
+	"auth_announce" => AUTH_MOD, 
+	"auth_vote" => AUTH_REG, 
 	"auth_pollcreate" => AUTH_REG
 );
 
@@ -98,7 +98,7 @@ function get_info($mode, $id)
 
 	$sql = "SELECT *
 		FROM $table
-		WHERE $idfield = $id";
+		WHERE $idfield = $id"; 
 
 	if( !$result = $db->sql_query($sql) )
 	{
@@ -234,14 +234,14 @@ if( isset($HTTP_POST_VARS['addforum']) || isset($HTTP_POST_VARS['addcategory']) 
 	{
 		list($cat_id) = each($HTTP_POST_VARS['addforum']);
 		$cat_id = intval($cat_id);
-		//
+		// 
 		// stripslashes needs to be run on this because slashes are added when the forum name is posted
 		//
 		$forumname = stripslashes($HTTP_POST_VARS['forumname'][$cat_id]);
 	}
 }
 
-if( !empty($mode) )
+if( !empty($mode) ) 
 {
 	switch($mode)
 	{
@@ -296,21 +296,21 @@ if( !empty($mode) )
 
 				$forumdesc = '';
 				$forumstatus = FORUM_UNLOCKED;
-				$forum_id = '';
+				$forum_id = ''; 
 				$prune_enabled = '';
 			}
 
 			$catlist = get_list('category', $cat_id, TRUE);
 
 			$forumstatus == ( FORUM_LOCKED ) ? $forumlocked = "selected=\"selected\"" : $forumunlocked = "selected=\"selected\"";
-
+			
 			// These two options ($lang['Status_unlocked'] and $lang['Status_locked']) seem to be missing from
 			// the language files.
 			$lang['Status_unlocked'] = isset($lang['Status_unlocked']) ? $lang['Status_unlocked'] : 'Unlocked';
 			$lang['Status_locked'] = isset($lang['Status_locked']) ? $lang['Status_locked'] : 'Locked';
-
+			
 			$statuslist = "<option value=\"" . FORUM_UNLOCKED . "\" $forumunlocked>" . $lang['Status_unlocked'] . "</option>\n";
-			$statuslist .= "<option value=\"" . FORUM_LOCKED . "\" $forumlocked>" . $lang['Status_locked'] . "</option>\n";
+			$statuslist .= "<option value=\"" . FORUM_LOCKED . "\" $forumlocked>" . $lang['Status_locked'] . "</option>\n"; 
 
 			$template->set_filenames(array(
 				"body" => "admin/forum_edit_body.tpl")
@@ -321,16 +321,16 @@ if( !empty($mode) )
 			$template->assign_vars(array(
 				'S_FORUM_ACTION' => append_sid("admin_forums.$phpEx"),
 				'S_HIDDEN_FIELDS' => $s_hidden_fields,
-				'S_SUBMIT_VALUE' => $buttonvalue,
+				'S_SUBMIT_VALUE' => $buttonvalue, 
 				'S_CAT_LIST' => $catlist,
 				'S_STATUS_LIST' => $statuslist,
 				'S_PRUNE_ENABLED' => $prune_enabled,
 
-				'L_FORUM_TITLE' => $l_title,
-				'L_FORUM_EXPLAIN' => $lang['Forum_edit_delete_explain'],
-				'L_FORUM_SETTINGS' => $lang['Forum_settings'],
-				'L_FORUM_NAME' => $lang['Forum_name'],
-				'L_CATEGORY' => $lang['Category'],
+				'L_FORUM_TITLE' => $l_title, 
+				'L_FORUM_EXPLAIN' => $lang['Forum_edit_delete_explain'], 
+				'L_FORUM_SETTINGS' => $lang['Forum_settings'], 
+				'L_FORUM_NAME' => $lang['Forum_name'], 
+				'L_CATEGORY' => $lang['Category'], 
 				'L_FORUM_DESCRIPTION' => $lang['Forum_desc'],
 				'L_FORUM_STATUS' => $lang['Forum_status'],
 				'L_AUTO_PRUNE' => $lang['Forum_pruning'],
@@ -367,7 +367,7 @@ if( !empty($mode) )
 
 			$max_order = $row['max_order'];
 			$next_order = $max_order + 10;
-
+			
 			$sql = "SELECT MAX(forum_id) AS max_id
 				FROM " . FORUMS_TABLE;
 			if( !$result = $db->sql_query($sql) )
@@ -380,7 +380,7 @@ if( !empty($mode) )
 			$next_id = $max_id + 1;
 
 			//
-			// Default permissions of public ::
+			// Default permissions of public :: 
 			//
 			$field_sql = "";
 			$value_sql = "";
@@ -477,7 +477,7 @@ if( !empty($mode) )
 			message_die(GENERAL_MESSAGE, $message);
 
 			break;
-
+			
 		case 'addcat':
 			// Create a category in the DB
 			if( trim($HTTP_POST_VARS['categoryname']) == '')
@@ -511,7 +511,7 @@ if( !empty($mode) )
 			message_die(GENERAL_MESSAGE, $message);
 
 			break;
-
+			
 		case 'editcat':
 			//
 			// Show form to edit a category
@@ -533,12 +533,12 @@ if( !empty($mode) )
 			$template->assign_vars(array(
 				'CAT_TITLE' => $cat_title,
 
-				'L_EDIT_CATEGORY' => $lang['Edit_Category'],
-				'L_EDIT_CATEGORY_EXPLAIN' => $lang['Edit_Category_explain'],
-				'L_CATEGORY' => $lang['Category'],
+				'L_EDIT_CATEGORY' => $lang['Edit_Category'], 
+				'L_EDIT_CATEGORY_EXPLAIN' => $lang['Edit_Category_explain'], 
+				'L_CATEGORY' => $lang['Category'], 
 
-				'S_HIDDEN_FIELDS' => $s_hidden_fields,
-				'S_SUBMIT_VALUE' => $buttonvalue,
+				'S_HIDDEN_FIELDS' => $s_hidden_fields, 
+				'S_SUBMIT_VALUE' => $buttonvalue, 
 				'S_FORUM_ACTION' => append_sid("admin_forums.$phpEx"))
 			);
 
@@ -560,7 +560,7 @@ if( !empty($mode) )
 			message_die(GENERAL_MESSAGE, $message);
 
 			break;
-
+			
 		case 'deleteforum':
 			// Show form to delete a forum
 			$forum_id = intval($HTTP_GET_VARS[POST_FORUM_URL]);
@@ -584,15 +584,15 @@ if( !empty($mode) )
 			$s_hidden_fields = '<input type="hidden" name="mode" value="' . $newmode . '" /><input type="hidden" name="from_id" value="' . $forum_id . '" />';
 
 			$template->assign_vars(array(
-				'NAME' => $name,
+				'NAME' => $name, 
 
-				'L_FORUM_DELETE' => $lang['Forum_delete'],
-				'L_FORUM_DELETE_EXPLAIN' => $lang['Forum_delete_explain'],
-				'L_MOVE_CONTENTS' => $lang['Move_contents'],
-				'L_FORUM_NAME' => $lang['Forum_name'],
+				'L_FORUM_DELETE' => $lang['Forum_delete'], 
+				'L_FORUM_DELETE_EXPLAIN' => $lang['Forum_delete_explain'], 
+				'L_MOVE_CONTENTS' => $lang['Move_contents'], 
+				'L_FORUM_NAME' => $lang['Forum_name'], 
 
 				"S_HIDDEN_FIELDS" => $s_hidden_fields,
-				'S_FORUM_ACTION' => append_sid("admin_forums.$phpEx"),
+				'S_FORUM_ACTION' => append_sid("admin_forums.$phpEx"), 
 				'S_SELECT_TO' => $select_to,
 				'S_SUBMIT_VALUE' => $buttonvalue)
 			);
@@ -612,9 +612,9 @@ if( !empty($mode) )
 			if($to_id == -1)
 			{
 				// Delete polls in this forum
-				$sql = "SELECT v.vote_id
-					FROM " . VOTE_DESC_TABLE . " v, " . TOPICS_TABLE . " t
-					WHERE t.forum_id = $from_id
+				$sql = "SELECT v.vote_id 
+					FROM " . VOTE_DESC_TABLE . " v, " . TOPICS_TABLE . " t 
+					WHERE t.forum_id = $from_id 
 						AND v.topic_id = t.topic_id";
 				if (!($result = $db->sql_query($sql)))
 				{
@@ -630,20 +630,20 @@ if( !empty($mode) )
 					}
 					while ($row = $db->sql_fetchrow($result));
 
-					$sql = "DELETE FROM " . VOTE_DESC_TABLE . "
+					$sql = "DELETE FROM " . VOTE_DESC_TABLE . " 
 						WHERE vote_id IN ($vote_ids)";
 					$db->sql_query($sql);
 
-					$sql = "DELETE FROM " . VOTE_RESULTS_TABLE . "
+					$sql = "DELETE FROM " . VOTE_RESULTS_TABLE . " 
 						WHERE vote_id IN ($vote_ids)";
 					$db->sql_query($sql);
 
-					$sql = "DELETE FROM " . VOTE_USERS_TABLE . "
+					$sql = "DELETE FROM " . VOTE_USERS_TABLE . " 
 						WHERE vote_id IN ($vote_ids)";
 					$db->sql_query($sql);
 				}
 				$db->sql_freeresult($result);
-
+				
 				include($phpbb_root_path . "includes/prune.$phpEx");
 				prune($from_id, 0, true); // Delete everything from forum
 			}
@@ -679,9 +679,9 @@ if( !empty($mode) )
 			}
 
 			// Alter Mod level if appropriate - 2.0.4
-			$sql = "SELECT ug.user_id
-				FROM " . AUTH_ACCESS_TABLE . " a, " . USER_GROUP_TABLE . " ug
-				WHERE a.forum_id <> $from_id
+			$sql = "SELECT ug.user_id 
+				FROM " . AUTH_ACCESS_TABLE . " a, " . USER_GROUP_TABLE . " ug 
+				WHERE a.forum_id <> $from_id 
 					AND a.auth_mod = 1
 					AND ug.group_id = a.group_id";
 			if( !$result = $db->sql_query($sql) )
@@ -698,17 +698,17 @@ if( !empty($mode) )
 				}
 				while ($row = $db->sql_fetchrow($result));
 
-				$sql = "SELECT ug.user_id
-					FROM " . AUTH_ACCESS_TABLE . " a, " . USER_GROUP_TABLE . " ug
-					WHERE a.forum_id = $from_id
-						AND a.auth_mod = 1
+				$sql = "SELECT ug.user_id 
+					FROM " . AUTH_ACCESS_TABLE . " a, " . USER_GROUP_TABLE . " ug 
+					WHERE a.forum_id = $from_id 
+						AND a.auth_mod = 1 
 						AND ug.group_id = a.group_id
 						AND ug.user_id NOT IN ($user_ids)";
 				if( !$result2 = $db->sql_query($sql) )
 				{
 					message_die(GENERAL_ERROR, "Couldn't obtain moderator list", "", __LINE__, __FILE__, $sql);
 				}
-
+					
 				if ($row = $db->sql_fetchrow($result2))
 				{
 					$user_ids = '';
@@ -718,9 +718,9 @@ if( !empty($mode) )
 					}
 					while ($row = $db->sql_fetchrow($result2));
 
-					$sql = "UPDATE " . USERS_TABLE . "
-						SET user_level = " . USER . "
-						WHERE user_id IN ($user_ids)
+					$sql = "UPDATE " . USERS_TABLE . " 
+						SET user_level = " . USER . " 
+						WHERE user_id IN ($user_ids) 
 							AND user_level <> " . ADMIN;
 					$db->sql_query($sql);
 				}
@@ -735,14 +735,14 @@ if( !empty($mode) )
 			{
 				message_die(GENERAL_ERROR, "Couldn't delete forum", "", __LINE__, __FILE__, $sql);
 			}
-
+			
 			$sql = "DELETE FROM " . AUTH_ACCESS_TABLE . "
 				WHERE forum_id = $from_id";
 			if( !$result = $db->sql_query($sql) )
 			{
 				message_die(GENERAL_ERROR, "Couldn't delete forum", "", __LINE__, __FILE__, $sql);
 			}
-
+			
 			$sql = "DELETE FROM " . PRUNE_TABLE . "
 				WHERE forum_id = $from_id";
 			if( !$result = $db->sql_query($sql) )
@@ -755,7 +755,7 @@ if( !empty($mode) )
 			message_die(GENERAL_MESSAGE, $message);
 
 			break;
-
+			
 		case 'deletecat':
 			//
 			// Show form to delete a category
@@ -801,15 +801,15 @@ if( !empty($mode) )
 			$s_hidden_fields = '<input type="hidden" name="mode" value="' . $newmode . '" /><input type="hidden" name="from_id" value="' . $cat_id . '" />';
 
 			$template->assign_vars(array(
-				'NAME' => $name,
+				'NAME' => $name, 
 
-				'L_FORUM_DELETE' => $lang['Forum_delete'],
-				'L_FORUM_DELETE_EXPLAIN' => $lang['Forum_delete_explain'],
-				'L_MOVE_CONTENTS' => $lang['Move_contents'],
-				'L_FORUM_NAME' => $lang['Forum_name'],
-
+				'L_FORUM_DELETE' => $lang['Forum_delete'], 
+				'L_FORUM_DELETE_EXPLAIN' => $lang['Forum_delete_explain'], 
+				'L_MOVE_CONTENTS' => $lang['Move_contents'], 
+				'L_FORUM_NAME' => $lang['Forum_name'], 
+				
 				'S_HIDDEN_FIELDS' => $s_hidden_fields,
-				'S_FORUM_ACTION' => append_sid("admin_forums.$phpEx"),
+				'S_FORUM_ACTION' => append_sid("admin_forums.$phpEx"), 
 				'S_SELECT_TO' => $select_to,
 				'S_SUBMIT_VALUE' => $buttonvalue)
 			);
@@ -849,7 +849,7 @@ if( !empty($mode) )
 
 			$sql = "DELETE FROM " . CATEGORIES_TABLE ."
 				WHERE cat_id = $from_id";
-
+				
 			if( !$result = $db->sql_query($sql) )
 			{
 				message_die(GENERAL_ERROR, "Couldn't delete category", "", __LINE__, __FILE__, $sql);
@@ -884,7 +884,7 @@ if( !empty($mode) )
 			$show_index = TRUE;
 
 			break;
-
+			
 		case 'cat_order':
 			//
 			// Change order of categories in the DB
@@ -932,14 +932,14 @@ $template->set_filenames(array(
 
 $template->assign_vars(array(
 	'S_FORUM_ACTION' => append_sid("admin_forums.$phpEx"),
-	'L_FORUM_TITLE' => $lang['Forum_admin'],
-	'L_FORUM_EXPLAIN' => $lang['Forum_admin_explain'],
-	'L_CREATE_FORUM' => $lang['Create_forum'],
-	'L_CREATE_CATEGORY' => $lang['Create_category'],
-	'L_EDIT' => $lang['Edit'],
-	'L_DELETE' => $lang['Delete'],
-	'L_MOVE_UP' => $lang['Move_up'],
-	'L_MOVE_DOWN' => $lang['Move_down'],
+	'L_FORUM_TITLE' => $lang['Forum_admin'], 
+	'L_FORUM_EXPLAIN' => $lang['Forum_admin_explain'], 
+	'L_CREATE_FORUM' => $lang['Create_forum'], 
+	'L_CREATE_CATEGORY' => $lang['Create_category'], 
+	'L_EDIT' => $lang['Edit'], 
+	'L_DELETE' => $lang['Delete'], 
+	'L_MOVE_UP' => $lang['Move_up'], 
+	'L_MOVE_DOWN' => $lang['Move_down'], 
 	'L_RESYNC' => $lang['Resync'])
 );
 
@@ -977,9 +977,9 @@ if( $total_categories = $db->sql_numrows($q_categories) )
 	{
 		$cat_id = $category_rows[$i]['cat_id'];
 
-		$template->assign_block_vars("catrow", array(
-			'S_ADD_FORUM_SUBMIT' => "addforum[$cat_id]",
-			'S_ADD_FORUM_NAME' => "forumname[$cat_id]",
+		$template->assign_block_vars("catrow", array( 
+			'S_ADD_FORUM_SUBMIT' => "addforum[$cat_id]", 
+			'S_ADD_FORUM_NAME' => "forumname[$cat_id]", 
 
 			'CAT_ID' => $cat_id,
 			'CAT_DESC' => $category_rows[$i]['cat_title'],
@@ -994,7 +994,7 @@ if( $total_categories = $db->sql_numrows($q_categories) )
 		for($j = 0; $j < $total_forums; $j++)
 		{
 			$forum_id = $forum_rows[$j]['forum_id'];
-
+			
 			if ($forum_rows[$j]['cat_id'] == $cat_id)
 			{
 
@@ -1014,7 +1014,7 @@ if( $total_categories = $db->sql_numrows($q_categories) )
 				);
 
 			}// if ... forumid == catid
-
+			
 		} // for ... forums
 
 	} // for ... categories

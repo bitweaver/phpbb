@@ -1,7 +1,7 @@
 #
 # Basic DB data for phpBB2 devel
 #
-# $Id: mysql_basic.sql,v 1.1.1.1.2.2 2005/07/20 01:18:07 southpawz Exp $
+# $Id: mysql_basic.sql,v 1.1.1.1.2.3 2006/01/02 09:48:03 squareing Exp $
 
 # -- Config
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('config_id','1');
@@ -24,6 +24,8 @@ INSERT INTO phpbb_config (config_name, config_value) VALUES ('allow_avatar_local
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('allow_avatar_remote','0');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('allow_avatar_upload','0');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('enable_confirm', '0');
+INSERT INTO phpbb_config (config_name, config_value) VALUES ('allow_autologin','1');
+INSERT INTO phpbb_config (config_name, config_value) VALUES ('max_autologin_time','0');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('override_user_style','0');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('posts_per_page','15');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('topics_per_page','50');
@@ -42,6 +44,8 @@ INSERT INTO phpbb_config (config_name, config_value) VALUES ('smtp_password','')
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('sendmail_fix','0');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('require_activation','0');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('flood_interval','15');
+INSERT INTO phpbb_config (config_name, config_value) VALUES ('max_login_attempts', '5');
+INSERT INTO phpbb_config (config_name, config_value) VALUES ('login_reset_time', '30');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('board_email_form','0');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('avatar_filesize','6144');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('avatar_max_width','80');
@@ -62,7 +66,7 @@ INSERT INTO phpbb_config (config_name, config_value) VALUES ('record_online_date
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('server_name', 'www.myserver.tld');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('server_port', '80');
 INSERT INTO phpbb_config (config_name, config_value) VALUES ('script_path', '/phpBB2/');
-INSERT INTO phpbb_config (config_name, config_value) VALUES ('version', '.0.17');
+INSERT INTO phpbb_config (config_name, config_value) VALUES ('version', '.0.19');
 
 
 # -- Categories

@@ -2,7 +2,7 @@
  phpBB2 PostgreSQL DB schema - phpBB group 2001
 
 
- $Id: postgres_schema.sql,v 1.1.1.1.2.1 2005/07/19 20:21:11 southpawz Exp $
+ $Id: postgres_schema.sql,v 1.1.1.1.2.3 2006/01/02 09:48:03 squareing Exp $
 */
 
 CREATE SEQUENCE phpbb_banlist_id_seq start 1 increment 1 maxvalue 2147483647 minvalue 1 cache 1;
@@ -295,6 +295,17 @@ CREATE TABLE phpbb_sessions (
 CREATE INDEX session_user_id_phpbb_sessions_index ON phpbb_sessions (session_user_id);
 CREATE INDEX session_id_ip_user_id_phpbb_sessions_index ON phpbb_sessions (session_id, session_ip, session_user_id);
 
+/* --------------------------------------------------------
+  Table structure for table phpbb_sessions_keys
+-------------------------------------------------------- */
+CREATE TABLE phpbb_sessions_keys (
+  key_id char(32) DEFAULT '0' NOT NULL,
+  user_id int4 DEFAULT '0' NOT NULL,
+  last_ip char(8) DEFAULT '0' NOT NULL,
+  last_login int4 DEFAULT '0' NOT NULL,
+  CONSTRAINT phpbb_sessions_keys_pkey PRIMARY KEY (key_id, user_id)
+);
+CREATE INDEX last_login_phpbb_sessions_keys_index ON phpbb_sessions_keys (last_login);
 
 /* --------------------------------------------------------
   Table structure for table phpbb_smilies
@@ -477,6 +488,8 @@ CREATE TABLE phpbb_users (
    user_new_privmsg int2 DEFAULT '0' NOT NULL,
    user_unread_privmsg int2 DEFAULT '0' NOT NULL,
    user_last_privmsg int4 DEFAULT '0' NOT NULL,
+   user_login_tries int2 DEFAULT '0' NOT NULL,
+   user_last_login_try int4 DEFAULT '0' NOT NULL,
    user_emailtime int4,
    user_viewemail int2,
    user_attachsig int2,
@@ -489,10 +502,10 @@ CREATE TABLE phpbb_users (
    user_rank int4 DEFAULT '0',
    user_avatar varchar(100),
    user_avatar_type int2 DEFAULT '0' NOT NULL,
-   user_level int4 DEFAULT '1',
+   user_level int4 DEFAULT '0',
    user_lang varchar(255),
    user_timezone decimal(5) DEFAULT '0' NOT NULL,
-   user_dateformat varchar(14) DEFAULT 'd M Y H:m' NOT NULL,
+   user_dateformat varchar(14) DEFAULT 'd M Y H:i' NOT NULL,
    user_notify_pm int2 DEFAULT '0' NOT NULL,
    user_popup_pm int2 DEFAULT '0' NOT NULL,
    user_notify int2,

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: viewforum.php,v 1.1 2005/06/19 04:59:49 bitweaver Exp $
+ *   $Id: viewforum.php,v 1.1.1.1.2.1 2006/01/02 09:44:49 squareing Exp $
  *
  *
  ***************************************************************************/

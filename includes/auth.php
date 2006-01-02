@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group        
  *   email                : support@phpbb.com                           
  *                                                          
- *   $Id: auth.php,v 1.1 2005/06/19 04:59:55 bitweaver Exp $                                                           
+ *   $Id: auth.php,v 1.1.1.1.2.1 2006/01/02 09:44:50 squareing Exp $                                                           
  *                                                            
  * 
  ***************************************************************************/ 

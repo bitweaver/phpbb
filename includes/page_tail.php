@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_tail.php,v 1.1.1.1.2.4 2005/10/08 16:49:44 spiderr Exp $
+ *   $Id: page_tail.php,v 1.1.1.1.2.5 2006/01/02 09:44:50 squareing Exp $
  *
  *
  ***************************************************************************/
@@ -25,6 +25,8 @@ if ( !defined('IN_PHPBB') )
 	die('Hacking attempt');
 }
 
+global $do_gzip_compress;
+
 //
 // Show the overall footer.
 //
@@ -35,14 +37,15 @@ $template->set_filenames(array(
 );
 
 $template->assign_vars(array(
-	//'PHPBB_VERSION' => '2' . $board_config['version'],
-	'TRANSLATION_INFO' => ( isset($lang['TRANSLATION_INFO']) ) ? $lang['TRANSLATION_INFO'] : '',
+	'TRANSLATION_INFO' => (isset($lang['TRANSLATION_INFO'])) ? $lang['TRANSLATION_INFO'] : ((isset($lang['TRANSLATION'])) ? $lang['TRANSLATION'] : ''),
 	'ADMIN_LINK' => $admin_link)
 );
 
 $template->pparse('overall_footer');
 
 // {{{ BIT_MOD
+// ***snip***
+//$db->sql_close();
 // ***snip***
 // }}} BIT_MOD
 

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: smtp.php,v 1.1 2005/06/19 04:59:55 bitweaver Exp $
+ *   $Id: smtp.php,v 1.1.1.1.2.1 2006/01/02 09:44:50 squareing Exp $
  *
  ***************************************************************************/
 
@@ -27,7 +27,8 @@ define('SMTP_INCLUDED', 1);
 // using SMTP Extensions
 //
 function server_parse($socket, $response, $line = __LINE__) 
-{ 
+{
+	$server_response = '';
 	while (substr($server_response, 3, 1) != ' ') 
 	{
 		if (!($server_response = fgets($socket, 256))) 

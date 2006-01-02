@@ -2,7 +2,7 @@
 
   mssql_schema.sql for phpBB2 (c) 2001, phpBB Group
 
- $Id: mssql_schema.sql,v 1.1.1.1.2.1 2005/07/19 20:21:11 southpawz Exp $
+ $Id: mssql_schema.sql,v 1.1.1.1.2.3 2006/01/02 09:48:03 squareing Exp $
 
 */
 
@@ -195,6 +195,14 @@ CREATE TABLE [phpbb_sessions] (
 ) ON [PRIMARY]
 GO
 
+CREATE TABLE [phpbb_sessions_keys] (
+  [key_id] [char] (32) NOT NULL ,
+  [user_id] [int] NOT NULL ,
+  [last_ip] [char] (8) NOT NULL ,
+  [last_login] [int] NOT NULL
+) ON [PRIMARY]
+GO
+
 CREATE TABLE [phpbb_smilies] (
 	[smilies_id] [int] IDENTITY (1, 1) NOT NULL ,
 	[code] [varchar] (10) NOT NULL ,
@@ -334,6 +342,8 @@ CREATE TABLE [phpbb_users] (
 	[user_new_privmsg] [smallint] NOT NULL ,
 	[user_unread_privmsg] [smallint] NOT NULL ,
 	[user_last_privmsg] [int] NOT NULL ,
+	[user_login_tries] [smallint] NOT NULL ,
+	[user_last_login_try] [int] NOT NULL ,
 	[user_emailtime] [int] NOT NULL ,
 	[user_viewemail] [smallint] NULL ,
 	[user_attachsig] [smallint] NULL ,
@@ -605,6 +615,8 @@ ALTER TABLE [phpbb_users] WITH NOCHECK ADD
 	CONSTRAINT [DF_phpbb_users_user_new_privmsg] DEFAULT (0) FOR [user_new_privmsg],
 	CONSTRAINT [DF_phpbb_users_user_unread_privmsg] DEFAULT (0) FOR [user_unread_privmsg],
 	CONSTRAINT [DF_phpbb_users_user_last_privmsg] DEFAULT (0) FOR [user_last_privmsg],
+	CONSTRAINT [DF_phpbb_users_user_login_tries] DEFAULT (0) FOR [user_login_tries],
+	CONSTRAINT [DF_phpbb_users_user_last_login_try] DEFAULT (0) FOR [user_last_login_try],
 	CONSTRAINT [DF_phpbb_users_user_emailtime] DEFAULT (0) FOR [user_emailtime],
 	CONSTRAINT [DF_phpbb_users_user_viewemail] DEFAULT (1) FOR [user_viewemail],
 	CONSTRAINT [DF_phpbb_users_user_attachsig] DEFAULT (1) FOR [user_attachsig],
@@ -616,6 +628,7 @@ ALTER TABLE [phpbb_users] WITH NOCHECK ADD
 	CONSTRAINT [DF_phpbb_users_user_allow_viewonline] DEFAULT (1) FOR [user_allow_viewonline],
 	CONSTRAINT [DF_phpbb_users_user_notify_pm] DEFAULT (0) FOR [user_notify_pm],
 	CONSTRAINT [DF_phpbb_users_user_popup_pm] DEFAULT (1) FOR [user_popup_pm],
+	CONSTRAINT [DF_phpbb_users_user_dateformat] DEFAULT('d M Y H:i') FOR [user_dateformat],
 	CONSTRAINT [DF_phpbb_users_user_avatar_type] DEFAULT (0) FOR [user_avatar_type]
 GO
 
@@ -665,6 +678,12 @@ GO
 GO
 
  CREATE  INDEX [IX_phpbb_sessions] ON [phpbb_sessions]([session_id], [session_user_id], [session_ip], [session_logged_in]) ON [PRIMARY]
+GO
+
+ CREATE  INDEX [IX_phpbb_sessions_keys] ON [phpbb_sessions_keys]([key_id], [user_id]) ON [PRIMARY]
+GO
+
+ CREATE  INDEX [IX_phpbb_sessions_keys_1] ON [phpbb_sessions_keys]([last_login]) ON [PRIMARY]
 GO
 
  CREATE  INDEX [IX_phpbb_topics] ON [phpbb_topics]([forum_id], [topic_type], [topic_first_post_id], [topic_last_post_id]) ON [PRIMARY]

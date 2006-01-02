@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: mysql.php,v 1.1.1.1.2.2 2005/09/18 18:44:49 spiderr Exp $
+ *   $Id: mysql.php,v 1.1.1.1.2.3 2006/01/02 09:44:49 squareing Exp $
  *
  ***************************************************************************/
 
@@ -130,7 +130,6 @@ class sql_db
 		{
 			return ( $transaction == END_TRANSACTION ) ? true : false;
 		}
-
 	}
 
 	//
@@ -274,7 +273,7 @@ class sql_db
 				{
 					if($this->rowset[$query_id])
 					{
-						$result = $this->rowset[$query_id][$field];
+						$result = $this->rowset[$query_id][0][$field];
 					}
 					else if($this->row[$query_id])
 					{

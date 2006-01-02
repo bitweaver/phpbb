@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_user_ban.php,v 1.1 2005/06/19 05:00:01 bitweaver Exp $
+ *   $Id: admin_user_ban.php,v 1.1.1.1.2.1 2006/01/02 09:44:49 squareing Exp $
  *
  *
  ***************************************************************************/
@@ -155,7 +155,7 @@ if ( isset($HTTP_POST_VARS['submit']) )
 			// contained in the annotated php manual at php.com (ereg
 			// section)
 			//
-			if (preg_match('#^(([a-z0-9&.-_+])|(\*))+@[a-z0-9\-]+\.([a-z0-9\-]+\.)*?[a-z]+$#is', trim($email_list_temp[$i])))
+			if (preg_match('/^(([a-z0-9&\'\.\-_\+])|(\*))+@(([a-z0-9\-])|(\*))+\.([a-z0-9\-]+\.)*?[a-z]+$/is', trim($email_list_temp[$i])))
 			{
 				$email_list[] = trim($email_list_temp[$i]);
 			}

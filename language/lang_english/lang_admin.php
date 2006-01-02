@@ -7,7 +7,7 @@
  *     copyright            : (C) 2001 The phpBB Group
  *     email                : support@phpbb.com
  *
- *     $Id: lang_admin.php,v 1.1 2005/06/19 04:59:53 bitweaver Exp $
+ *     $Id: lang_admin.php,v 1.1.1.1.2.1 2006/01/02 09:44:50 squareing Exp $
  *
  ****************************************************************************/
 
@@ -335,6 +335,12 @@ $lang['Session_length'] = 'Session length [ seconds ]';
 $lang['Visual_confirm'] = 'Enable Visual Confirmation';
 $lang['Visual_confirm_explain'] = 'Requires users enter a code defined by an image when registering.';
 
+// Autologin Keys - added 2.0.18
+$lang['Allow_autologin'] = 'Allow automatic logins';
+$lang['Allow_autologin_explain'] = 'Determines whether users are allowed to select to be automatically logged in when visiting the forum';
+$lang['Autologin_time'] = 'Automatic login key expiry';
+$lang['Autologin_time_explain'] = 'How long a autologin key is valid for in days if the user does not visit the board. Set to zero to disable expiry.';
+
 //
 // Forum Management
 //
@@ -621,6 +627,7 @@ $lang['Value'] = 'Value';
 $lang['Save_Settings'] = 'Save Settings';
 
 $lang['Stylesheet'] = 'CSS Stylesheet';
+$lang['Stylesheet_explain'] = 'Filename for CSS stylesheet to use for this theme.';
 $lang['Background_image'] = 'Background Image';
 $lang['Background_color'] = 'Background Colour';
 $lang['Theme_name'] = 'Theme Name';
@@ -735,6 +742,15 @@ $lang['Connect_socket_error'] = 'Unable to open connection to phpBB Server, repo
 $lang['Socket_functions_disabled'] = 'Unable to use socket functions.';
 $lang['Mailing_list_subscribe_reminder'] = 'For the latest information on updates to phpBB, why not <a href="http://www.phpbb.com/support/" target="_new">subscribe to our mailing list</a>.';
 $lang['Version_information'] = 'Version Information';
+
+//
+// Login attempts configuration
+//
+$lang['Max_login_attempts'] = 'Allowed login attempts';
+$lang['Max_login_attempts_explain'] = 'The number of allowed board login attempts.';
+$lang['Login_reset_time'] = 'Login lock time';
+$lang['Login_reset_time_explain'] = 'Time in minutes the user have to wait until he is allowed to login again after exceeding the number of allowed login attempts.';
+
 //
 // That's all Folks!
 // -------------------------------------------------

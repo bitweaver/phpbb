@@ -8,32 +8,32 @@
 
 <!-- BEGIN quote_username_open --></span>
 <table width="90%" cellspacing="1" cellpadding="3" border="0" align="center">
-<tr>
-          <td><span class="genmed"><b>{USERNAME} {L_WROTE}:</b></span></td>
-        </tr>
-        <tr>
-          <td class="quote"><!-- END quote_username_open -->
+<tr> 
+	  <td><span class="genmed"><b>{USERNAME} {L_WROTE}:</b></span></td>
+	</tr>
+	<tr>
+	  <td class="quote"><!-- END quote_username_open -->
 <!-- BEGIN quote_open --></span>
 <table width="90%" cellspacing="1" cellpadding="3" border="0" align="center">
-<tr>
-          <td><span class="genmed"><b>{L_QUOTE}:</b></span></td>
-        </tr>
-        <tr>
-          <td class="quote"><!-- END quote_open -->
+<tr> 
+	  <td><span class="genmed"><b>{L_QUOTE}:</b></span></td>
+	</tr>
+	<tr>
+	  <td class="quote"><!-- END quote_open -->
 <!-- BEGIN quote_close --></td>
-        </tr>
+	</tr>
 </table>
 <span class="postbody"><!-- END quote_close -->
 
 <!-- BEGIN code_open --></span>
 <table width="90%" cellspacing="1" cellpadding="3" border="0" align="center">
-<tr>
-          <td><span class="genmed"><b>{L_CODE}:</b></span></td>
-        </tr>
-        <tr>
-          <td class="code"><!-- END code_open -->
+<tr> 
+	  <td><span class="genmed"><b>{L_CODE}:</b></span></td>
+	</tr>
+	<tr>
+	  <td class="code"><!-- END code_open -->
 <!-- BEGIN code_close --></td>
-        </tr>
+	</tr>
 </table>
 <span class="postbody"><!-- END code_close -->
 
@@ -57,6 +57,4 @@
 
 <!-- BEGIN url --><a href="{URL}" target="_blank" class="postlink">{DESCRIPTION}</a><!-- END url -->
 
-<!-- BEGIN email --><a href="mailto:{EMAIL}">{EMAIL}</A><!-- END email -->
-
-<!-- BEGIN wiki --><a href="../wiki/index.php?page={WIKI}" target="_self" class="postlink">WikiPage: {WIKI}</a><!-- END wiki -->
+<!-- BEGIN email --><a href="mailto:{EMAIL}">{EMAIL}</a><!-- END email -->

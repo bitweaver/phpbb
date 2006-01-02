@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_confirm.php,v 1.1 2005/06/19 04:59:55 bitweaver Exp $
+ *   $Id: usercp_confirm.php,v 1.1.1.1.2.1 2006/01/02 09:44:50 squareing Exp $
  *
  ***************************************************************************/
 
@@ -153,18 +153,15 @@ if (@extension_loaded('zlib'))
 }
 else
 {
-	if (!empty($HTTP_GET_VARS['c']))
-	{
-		$_png = define_raw_pngs();
+	$_png = define_raw_pngs();
 
-		$char = substr($code, intval($HTTP_GET_VARS['c']) - 1, 1);
-		header('Content-Type: image/png');
-		header('Cache-control: no-cache, no-store');
-		echo base64_decode($_png[$char]);
+	$char = substr($code, -1);
+	header('Content-Type: image/png');
+	header('Cache-control: no-cache, no-store');
+	echo base64_decode($_png[$char]);
 
-		unset($_png);
-		exit;
-	}
+	unset($_png);
+	exit;
 }
 
 exit;
