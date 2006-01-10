@@ -20,7 +20,8 @@
 */
 
 /* General page style. The scroll bar colours only visible in IE5.5+ */
-.phpbb body {
+body { 
+	background-color: {T_BODY_BGCOLOR};
 	scrollbar-face-color: {T_TR_COLOR2};
 	scrollbar-highlight-color: {T_TD_COLOR2};
 	scrollbar-shadow-color: {T_TR_COLOR2};
@@ -31,14 +32,13 @@
 }
 
 /* General font families for common tags */
-.phpbb font,.phpbb th,.phpbb td,.phpbb p { font-family: {T_FONTFACE1} }
-.phpbb a:link,.phpbb a:active,.phpbb a:visited { color : {T_BODY_LINK}; }
-.phpbb a:hover		{ text-decoration: underline; color : {T_BODY_HLINK}; }
-.phpbb hr	{ height: 0px; border: solid {T_TR_COLOR3} 0px; border-top-width: 1px;}
-.phpbb img, .phpbb img:hover { border: none; }
+font,th,td,p { font-family: {T_FONTFACE1} }
+a:link,a:active,a:visited { color : {T_BODY_LINK}; }
+a:hover		{ text-decoration: underline; color : {T_BODY_HLINK}; }
+hr	{ height: 0px; border: solid {T_TR_COLOR3} 0px; border-top-width: 1px;}
 
 /* This is the border line & background colour round the entire page */
-.bodyline	{ background-color: {T_TD_COLOR2}; }
+.bodyline	{ background-color: {T_TD_COLOR2}; border: 1px {T_TH_COLOR1} solid; }
 
 /* This is the outline round the main forum tables */
 .forumline	{ background-color: {T_TD_COLOR2}; border: 2px {T_TH_COLOR2} solid; }
@@ -60,8 +60,8 @@ td.rowpic {
 }
 
 /* Header cells - the blue and silver gradient backgrounds */
-.phpbb th	{
-	color: {T_FONTCOLOR3}; font-size: {T_FONTSIZE2}px; font-weight : bold;
+th	{
+	color: {T_FONTCOLOR3}; font-size: {T_FONTSIZE2}px; font-weight : bold; 
 	background-color: {T_BODY_LINK}; height: 25px;
 	background-image: url(templates/subSilver/images/{T_TH_CLASS2});
 }
@@ -131,7 +131,7 @@ a.nav			{ text-decoration: none; color : {T_BODY_LINK}; }
 a.nav:hover		{ text-decoration: underline; }
 
 /* titles for the topics: could specify viewed link colour too */
-.topictitle	{ font-weight: bold; font-size: {T_FONTSIZE2}px; color : {T_BODY_TEXT}; }
+.topictitle,h1,h2	{ font-weight: bold; font-size: {T_FONTSIZE2}px; color : {T_BODY_TEXT}; }
 a.topictitle:link   { text-decoration: none; color : {T_BODY_LINK}; }
 a.topictitle:visited { text-decoration: none; color : {T_BODY_VLINK}; }
 a.topictitle:hover	{ text-decoration: underline; color : {T_BODY_HLINK}; }
@@ -143,13 +143,13 @@ a.topictitle:hover	{ text-decoration: underline; color : {T_BODY_HLINK}; }
 .postdetails		{ font-size : {T_FONTSIZE1}px; color : {T_BODY_TEXT}; }
 
 /* The content of the posts (body of text) */
-.phpBB .postbody { font-size : {T_FONTSIZE3}px; line-height: 18px}
+.postbody { font-size : {T_FONTSIZE3}px; line-height: 18px}
 a.postlink:link	{ text-decoration: none; color : {T_BODY_LINK} }
 a.postlink:visited { text-decoration: none; color : {T_BODY_VLINK}; }
 a.postlink:hover { text-decoration: underline; color : {T_BODY_HLINK}}
 
 /* Quote & Code blocks */
-.code {
+.code { 
 	font-family: {T_FONTFACE3}; font-size: {T_FONTSIZE2}px; color: {T_FONTCOLOR2};
 	background-color: {T_TD_COLOR1}; border: {T_TR_COLOR3}; border-style: solid;
 	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
@@ -167,7 +167,7 @@ a.copyright		{ color: {T_FONTCOLOR1}; text-decoration: none;}
 a.copyright:hover { color: {T_BODY_TEXT}; text-decoration: underline;}
 
 /* Form elements */
-.phpbb input,.phpbb textarea, .phpbb select {
+input,textarea, select {
 	color : {T_BODY_TEXT};
 	font: normal {T_FONTSIZE2}px {T_FONTFACE1};
 	border-color : {T_BODY_TEXT};
@@ -206,7 +206,7 @@ input.liteoption {
 .helpline { background-color: {T_TR_COLOR2}; border-style: none; }
 
 /* Import the fancy styles for IE only (NS4.x doesn't use the @import function) */
-@import url("templates/subSilver/formIE.css");
+@import url("templates/subSilver/formIE.css"); 
 -->
 </style>
 <!-- BEGIN switch_enable_pm_popup -->
@@ -224,6 +224,25 @@ input.liteoption {
 
 <a name="top"></a>
 
-<table width="100%" cellspacing="0" cellpadding="10" border="0" align="center">
-	<tr>
-		<td class="bodyline">
+<table width="100%" cellspacing="0" cellpadding="10" border="0" align="center"> 
+	<tr> 
+		<td class="bodyline"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tr> 
+				<td><a href="{U_INDEX}"><img src="templates/subSilver/images/logo_phpBB.gif" border="0" alt="{L_INDEX}" vspace="1" /></a></td>
+				<td align="center" width="100%" valign="middle"><span class="maintitle">{SITENAME}</span><br /><span class="gen">{SITE_DESCRIPTION}<br />&nbsp; </span> 
+				<table cellspacing="0" cellpadding="2" border="0">
+					<tr> 
+						<td align="center" valign="top" nowrap="nowrap"><span class="mainmenu">&nbsp;<a href="{U_FAQ}" class="mainmenu"><img src="templates/subSilver/images/icon_mini_faq.gif" width="12" height="13" border="0" alt="{L_FAQ}" hspace="3" />{L_FAQ}</a>&nbsp; &nbsp;<a href="{U_SEARCH}" class="mainmenu"><img src="templates/subSilver/images/icon_mini_search.gif" width="12" height="13" border="0" alt="{L_SEARCH}" hspace="3" />{L_SEARCH}</a>&nbsp; &nbsp;<a href="{U_MEMBERLIST}" class="mainmenu"><img src="templates/subSilver/images/icon_mini_members.gif" width="12" height="13" border="0" alt="{L_MEMBERLIST}" hspace="3" />{L_MEMBERLIST}</a>&nbsp; &nbsp;<a href="{U_GROUP_CP}" class="mainmenu"><img src="templates/subSilver/images/icon_mini_groups.gif" width="12" height="13" border="0" alt="{L_USERGROUPS}" hspace="3" />{L_USERGROUPS}</a>&nbsp; 
+						<!-- BEGIN switch_user_logged_out -->
+						&nbsp;<a href="{U_REGISTER}" class="mainmenu"><img src="templates/subSilver/images/icon_mini_register.gif" width="12" height="13" border="0" alt="{L_REGISTER}" hspace="3" />{L_REGISTER}</a>&nbsp;
+						<!-- END switch_user_logged_out -->
+						</span></td>
+					</tr>
+					<tr>
+						<td height="25" align="center" valign="top" nowrap="nowrap"><span class="mainmenu">&nbsp;<a href="{U_PROFILE}" class="mainmenu"><img src="templates/subSilver/images/icon_mini_profile.gif" width="12" height="13" border="0" alt="{L_PROFILE}" hspace="3" />{L_PROFILE}</a>&nbsp; &nbsp;<a href="{U_PRIVATEMSGS}" class="mainmenu"><img src="templates/subSilver/images/icon_mini_message.gif" width="12" height="13" border="0" alt="{PRIVATE_MESSAGE_INFO}" hspace="3" />{PRIVATE_MESSAGE_INFO}</a>&nbsp; &nbsp;<a href="{U_LOGIN_LOGOUT}" class="mainmenu"><img src="templates/subSilver/images/icon_mini_login.gif" width="12" height="13" border="0" alt="{L_LOGIN_LOGOUT}" hspace="3" />{L_LOGIN_LOGOUT}</a>&nbsp;</span></td>
+					</tr>
+				</table></td>
+			</tr>
+		</table>
+
+		<br />

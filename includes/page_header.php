@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_header.php,v 1.3 2005/08/01 18:41:16 squareing Exp $
+ *   $Id: page_header.php,v 1.4 2006/01/10 21:15:10 squareing Exp $
  *
  *
  ***************************************************************************/
@@ -450,6 +450,14 @@ $template->assign_vars(array(
 if ( !$userdata['session_logged_in'] )
 {
 	$template->assign_block_vars('switch_user_logged_out', array());
+	//
+	// Allow autologin?
+	//
+	if (!isset($board_config['allow_autologin']) || $board_config['allow_autologin'] )
+	{
+		$template->assign_block_vars('switch_allow_autologin', array());
+		$template->assign_block_vars('switch_user_logged_out.switch_allow_autologin', array());
+	}
 }
 else
 {

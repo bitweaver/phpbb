@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: index.php,v 1.2 2005/10/12 15:13:53 spiderr Exp $
+ *   $Id: index.php,v 1.3 2006/01/10 21:15:08 squareing Exp $
  *
  *
  ***************************************************************************/
@@ -111,7 +111,7 @@ else
 // Start page proper
 //
 $sql = "SELECT c.cat_id, c.cat_title, c.cat_order
-	FROM " . CATEGORIES_TABLE . " c
+	FROM " . CATEGORIES_TABLE . " c 
 	ORDER BY c.cat_order";
 if( !($result = $db->sql_query($sql)) )
 {
@@ -130,24 +130,24 @@ if( ( $total_categories = count($category_rows) ) )
 	switch(SQL_LAYER)
 	{
 		case 'postgresql':
-			$sql = "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id
+			$sql = "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id 
 				FROM " . FORUMS_TABLE . " f, " . POSTS_TABLE . " p, " . USERS_TABLE . " u
-				WHERE p.post_id = f.forum_last_post_id
-					AND u.user_id = p.poster_id
+				WHERE p.post_id = f.forum_last_post_id 
+					AND u.user_id = p.poster_id  
 					UNION (
 						SELECT f.*, NULL, NULL, NULL, NULL
 						FROM " . FORUMS_TABLE . " f
 						WHERE NOT EXISTS (
 							SELECT p.post_time
 							FROM " . POSTS_TABLE . " p
-							WHERE p.post_id = f.forum_last_post_id
+							WHERE p.post_id = f.forum_last_post_id  
 						)
 					)
 					ORDER BY cat_id, forum_order";
 			break;
 
 		case 'oracle':
-			$sql = "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id
+			$sql = "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id 
 				FROM " . FORUMS_TABLE . " f, " . POSTS_TABLE . " p, " . USERS_TABLE . " u
 				WHERE p.post_id = f.forum_last_post_id(+)
 					AND u.user_id = p.poster_id(+)
@@ -183,13 +183,19 @@ if( ( $total_categories = count($category_rows) ) )
 	// Obtain a list of topic ids which contain
 	// posts made since user last visited
 	//
-	if ( $userdata['session_logged_in'] )
+	if ($userdata['session_logged_in'])
 	{
-		$sql = "SELECT t.forum_id, t.topic_id, p.post_time
-			FROM " . TOPICS_TABLE . " t, " . POSTS_TABLE . " p
-			WHERE p.post_id = t.topic_last_post_id
-				AND p.post_time > " . $userdata['user_lastvisit'] . "
-				AND t.topic_moved_id = 0";
+		// 60 days limit
+		if ($userdata['user_lastvisit'] < (time() - 5184000))
+		{
+			$userdata['user_lastvisit'] = time() - 5184000;
+		}
+
+		$sql = "SELECT t.forum_id, t.topic_id, p.post_time 
+			FROM " . TOPICS_TABLE . " t, " . POSTS_TABLE . " p 
+			WHERE p.post_id = t.topic_last_post_id 
+				AND p.post_time > " . $userdata['user_lastvisit'] . " 
+				AND t.topic_moved_id = 0"; 
 		if ( !($result = $db->sql_query($sql)) )
 		{
 			message_die(GENERAL_ERROR, 'Could not query new topic information', '', __LINE__, __FILE__, $sql);
@@ -207,14 +213,14 @@ if( ( $total_categories = count($category_rows) ) )
 	// Obtain list of moderators of each forum
 	// First users, then groups ... broken into two queries
 	//
-	$sql = "SELECT aa.forum_id, u.user_id, u.username
+	$sql = "SELECT aa.forum_id, u.user_id, u.username 
 		FROM " . AUTH_ACCESS_TABLE . " aa, " . USER_GROUP_TABLE . " ug, " . GROUPS_TABLE . " g, " . USERS_TABLE . " u
-		WHERE aa.auth_mod = " . TRUE . "
-			AND g.group_single_user = 1
-			AND ug.group_id = aa.group_id
-			AND g.group_id = aa.group_id
-			AND u.user_id = ug.user_id
-		GROUP BY u.user_id, u.username, aa.forum_id
+		WHERE aa.auth_mod = " . TRUE . " 
+			AND g.group_single_user = 1 
+			AND ug.group_id = aa.group_id 
+			AND g.group_id = aa.group_id 
+			AND u.user_id = ug.user_id 
+		GROUP BY u.user_id, u.username, aa.forum_id 
 		ORDER BY aa.forum_id, u.user_id";
 	if ( !($result = $db->sql_query($sql)) )
 	{
@@ -228,14 +234,14 @@ if( ( $total_categories = count($category_rows) ) )
 	}
 	$db->sql_freeresult($result);
 
-	$sql = "SELECT aa.forum_id, g.group_id, g.group_name
-		FROM " . AUTH_ACCESS_TABLE . " aa, " . USER_GROUP_TABLE . " ug, " . GROUPS_TABLE . " g
-		WHERE aa.auth_mod = " . TRUE . "
-			AND g.group_single_user = 0
+	$sql = "SELECT aa.forum_id, g.group_id, g.group_name 
+		FROM " . AUTH_ACCESS_TABLE . " aa, " . USER_GROUP_TABLE . " ug, " . GROUPS_TABLE . " g 
+		WHERE aa.auth_mod = " . TRUE . " 
+			AND g.group_single_user = 0 
 			AND g.group_type <> " . GROUP_HIDDEN . "
-			AND ug.group_id = aa.group_id
-			AND g.group_id = aa.group_id
-		GROUP BY g.group_id, g.group_name, aa.forum_id
+			AND ug.group_id = aa.group_id 
+			AND g.group_id = aa.group_id 
+		GROUP BY g.group_id, g.group_name, aa.forum_id 
 		ORDER BY aa.forum_id, g.group_id";
 	if ( !($result = $db->sql_query($sql)) )
 	{
@@ -268,7 +274,7 @@ if( ( $total_categories = count($category_rows) ) )
 	$template->assign_vars(array(
 		'TOTAL_POSTS' => sprintf($l_total_post_s, $total_posts),
 		'TOTAL_USERS' => sprintf($l_total_user_s, $total_users),
-		'NEWEST_USER' => sprintf($lang['Newest_user'], '<a href="' . append_sid("profile.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . "=$newest_uid") . '">', $newest_user, '</a>'),
+		'NEWEST_USER' => sprintf($lang['Newest_user'], '<a href="' . append_sid("profile.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . "=$newest_uid") . '">', $newest_user, '</a>'), 
 
 		'FORUM_IMG' => $images['forum'],
 		'FORUM_NEW_IMG' => $images['forum_new'],
@@ -279,16 +285,16 @@ if( ( $total_categories = count($category_rows) ) )
 		'L_REPLIES' => $lang['Replies'],
 		'L_VIEWS' => $lang['Views'],
 		'L_POSTS' => $lang['Posts'],
-		'L_LASTPOST' => $lang['Last_Post'],
+		'L_LASTPOST' => $lang['Last_Post'], 
 		'L_NO_NEW_POSTS' => $lang['No_new_posts'],
 		'L_NEW_POSTS' => $lang['New_posts'],
-		'L_NO_NEW_POSTS_LOCKED' => $lang['No_new_posts_locked'],
-		'L_NEW_POSTS_LOCKED' => $lang['New_posts_locked'],
-		'L_ONLINE_EXPLAIN' => $lang['Online_explain'],
+		'L_NO_NEW_POSTS_LOCKED' => $lang['No_new_posts_locked'], 
+		'L_NEW_POSTS_LOCKED' => $lang['New_posts_locked'], 
+		'L_ONLINE_EXPLAIN' => $lang['Online_explain'], 
 
-		'L_MODERATOR' => $lang['Moderators'],
+		'L_MODERATOR' => $lang['Moderators'], 
 		'L_FORUM_LOCKED' => $lang['Forum_is_locked'],
-		'L_MARK_FORUMS_READ' => $lang['Mark_all_forums'],
+		'L_MARK_FORUMS_READ' => $lang['Mark_all_forums'], 
 
 		'U_MARK_READ' => append_sid("index.$phpEx?mark=forums"))
 	);
@@ -336,7 +342,7 @@ if( ( $total_categories = count($category_rows) ) )
 						{
 							if ( $forum_data[$j]['forum_status'] == FORUM_LOCKED )
 							{
-								$folder_image = $images['forum_locked'];
+								$folder_image = $images['forum_locked']; 
 								$folder_alt = $lang['Forum_locked'];
 							}
 							else
@@ -385,8 +391,8 @@ if( ( $total_categories = count($category_rows) ) )
 									}
 								}
 
-								$folder_image = ( $unread_topics ) ? $images['forum_new'] : $images['forum'];
-								$folder_alt = ( $unread_topics ) ? $lang['New_posts'] : $lang['No_new_posts'];
+								$folder_image = ( $unread_topics ) ? $images['forum_new'] : $images['forum']; 
+								$folder_alt = ( $unread_topics ) ? $lang['New_posts'] : $lang['No_new_posts']; 
 							}
 
 							$posts = $forum_data[$j]['forum_posts'];
@@ -399,7 +405,7 @@ if( ( $total_categories = count($category_rows) ) )
 								$last_post = $last_post_time . '<br />';
 
 								$last_post .= ( $forum_data[$j]['user_id'] == ANONYMOUS ) ? ( ($forum_data[$j]['post_username'] != '' ) ? $forum_data[$j]['post_username'] . ' ' : $lang['Guest'] . ' ' ) : '<a href="' . append_sid("profile.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . '='  . $forum_data[$j]['user_id']) . '">' . $forum_data[$j]['username'] . '</a> ';
-
+								
 								$last_post .= '<a href="' . append_sid("viewtopic.$phpEx?"  . POST_POST_URL . '=' . $forum_data[$j]['forum_last_post_id']) . '#' . $forum_data[$j]['forum_last_post_id'] . '"><img src="' . $images['icon_latest_reply'] . '" border="0" alt="' . $lang['View_latest_post'] . '" title="' . $lang['View_latest_post'] . '" /></a>';
 							}
 							else
@@ -424,7 +430,7 @@ if( ( $total_categories = count($category_rows) ) )
 							$template->assign_block_vars('catrow.forumrow',	array(
 								'ROW_COLOR' => '#' . $row_color,
 								'ROW_CLASS' => $row_class,
-								'FORUM_FOLDER_IMG' => $folder_image,
+								'FORUM_FOLDER_IMG' => $folder_image, 
 								'FORUM_NAME' => $forum_data[$j]['forum_name'],
 								'FORUM_DESC' => $forum_data[$j]['forum_desc'],
 								'POSTS' => $forum_data[$j]['forum_posts'],
@@ -432,8 +438,8 @@ if( ( $total_categories = count($category_rows) ) )
 								'LAST_POST' => $last_post,
 								'MODERATORS' => $moderator_list,
 
-								'L_MODERATOR' => $l_moderators,
-								'L_FORUM_FOLDER_ALT' => $folder_alt,
+								'L_MODERATOR' => $l_moderators, 
+								'L_FORUM_FOLDER_ALT' => $folder_alt, 
 
 								'U_VIEWFORUM' => append_sid("viewforum.$phpEx?" . POST_FORUM_URL . "=$forum_id"))
 							);

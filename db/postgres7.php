@@ -6,7 +6,7 @@
    *   copyright            : (C) 2001 The phpBB Group
    *   email                : supportphpbb.com
    *
-   *   $Id: postgres7.php,v 1.1 2005/06/19 04:59:54 bitweaver Exp $
+   *   $Id: postgres7.php,v 1.2 2006/01/10 21:15:09 squareing Exp $
    *
    ***************************************************************************/
 
@@ -339,7 +339,7 @@ class sql_db
 
 		if($query_id && $this->last_query_text[$query_id] != "")
 		{
-			if( preg_match("/^INSERT[\t\n ]+INTO[\t\n ]+([-a-z0-9\_\.]+)/is", $this->last_query_text[$query_id], $tablename) )
+			if( preg_match("/^INSERT[\t\n ]+INTO[\t\n ]+([a-z0-9\_\-]+)/is", $this->last_query_text[$query_id], $tablename) )
 			{
 				$query = "SELECT currval('" . $tablename[1] . "_id_seq') AS last_value";
 				$temp_q_id =  @pg_exec($this->db_connect_id, $query);

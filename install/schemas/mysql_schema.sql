@@ -1,7 +1,7 @@
 #
 # phpBB2 - MySQL schema
 #
-# $Id: mysql_schema.sql,v 1.2 2005/07/25 20:02:25 squareing Exp $
+# $Id: mysql_schema.sql,v 1.3 2006/01/10 21:15:10 squareing Exp $
 #
 
 #
@@ -194,7 +194,7 @@ CREATE TABLE phpbb_posts (
 #
 CREATE TABLE phpbb_posts_text (
    post_id mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
-   bbcode_uid char(10) NOT NULL,
+   bbcode_uid char(10) DEFAULT '' NOT NULL,
    post_subject char(60),
    post_text text,
    PRIMARY KEY (post_id)
@@ -309,6 +309,19 @@ CREATE TABLE phpbb_sessions (
    PRIMARY KEY (session_id),
    KEY session_user_id (session_user_id),
    KEY session_id_ip_user_id (session_id, session_ip, session_user_id)
+);
+
+# --------------------------------------------------------
+#
+# Table structure for table `phpbb_sessions_keys`
+#
+CREATE TABLE phpbb_sessions_keys (
+  key_id varchar(32) DEFAULT '0' NOT NULL,
+  user_id mediumint(8) DEFAULT '0' NOT NULL,
+  last_ip varchar(8) DEFAULT '0' NOT NULL,
+  last_login int(11) DEFAULT '0' NOT NULL,
+  PRIMARY KEY (key_id, user_id),
+  KEY last_login (last_login)
 );
 
 
@@ -479,6 +492,8 @@ CREATE TABLE phpbb_users (
    user_new_privmsg smallint(5) UNSIGNED DEFAULT '0' NOT NULL,
    user_unread_privmsg smallint(5) UNSIGNED DEFAULT '0' NOT NULL,
    user_last_privmsg int(11) DEFAULT '0' NOT NULL,
+   user_login_tries smallint(5) UNSIGNED DEFAULT '0' NOT NULL,
+   user_last_login_try int(11) DEFAULT '0' NOT NULL,
    user_emailtime int(11),
    user_viewemail tinyint(1),
    user_attachsig tinyint(1),

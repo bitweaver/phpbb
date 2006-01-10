@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: install.php,v 1.3 2005/10/12 15:13:53 spiderr Exp $
+ *   $Id: install.php,v 1.4 2006/01/10 21:15:10 squareing Exp $
  *
  ***************************************************************************/
 
@@ -19,12 +19,12 @@
  *
  ***************************************************************************/
 
-// {{{ TIKI_MOD
+// {{{ BIT_MOD
 // Make sure only bitweaver admins can run the installer
 require_once( '../../bit_setup_inc.php' );
 global $gBitSystem;
 $gBitSystem->verifyPermission( 'bit_p_admin' );
-// }}} TIKI_MOD
+// }}} BIT_MOD
 
 // ---------
 // FUNCTIONS
@@ -49,13 +49,13 @@ td.rowpic	{ background-image: url('../templates/subSilver/images/cellpic2.jpg');
 td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom { background-image: url('../templates/subSilver/images/cellpic1.gif') }
 
 /* Import the fancy styles for IE only (NS4.x doesn't use the @import function) */
-@import url("../templates/subSilver/formIE.css");
+@import url("../templates/subSilver/formIE.css"); 
 //-->
 </style>
 </head>
 <body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#5584AA">
 
-<table width="100%" border="0" cellspacing="0" cellpadding="10" align="center">
+<table width="100%" border="0" cellspacing="0" cellpadding="10" align="center"> 
 	<tr>
 		<td class="bodyline" width="100%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
@@ -105,7 +105,7 @@ function page_common_form($hidden, $submit)
 {
 
 ?>
-					<tr>
+					<tr> 
 					  <td class="catBottom" align="center" colspan="2"><?php echo $hidden; ?><input class="mainoption" type="submit" value="<?php echo $submit; ?>" /></td>
 					</tr>
 <?php
@@ -123,7 +123,7 @@ function page_upgrade_form()
 					<tr>
 						<td class="catBottom" align="center" colspan="2"><input type="submit" name="upgrade_now" value="<?php echo $lang['upgrade_submit']; ?>" /></td>
 					</tr>
-<?php
+<?php 
 
 }
 
@@ -141,7 +141,7 @@ function page_error($error_title, $error)
 
 }
 
-// Guess an initial language ... borrowed from phpBB 2.2 it's not perfect,
+// Guess an initial language ... borrowed from phpBB 2.2 it's not perfect, 
 // really it should do a straight match first pass and then try a "fuzzy"
 // match on a second pass instead of a straight "fuzzy" match.
 function guess_lang()
@@ -152,54 +152,54 @@ function guess_lang()
 	// matches. Don't go moving these around without checking with
 	// me first - psoTFX
 	$match_lang = array(
-		'arabic'					=> 'ar([_-][a-z]+)?',
-		'bulgarian'					=> 'bg',
-		'catalan'					=> 'ca',
-		'czech'						=> 'cs',
-		'danish'					=> 'da',
+		'arabic'					=> 'ar([_-][a-z]+)?', 
+		'bulgarian'					=> 'bg', 
+		'catalan'					=> 'ca', 
+		'czech'						=> 'cs', 
+		'danish'					=> 'da', 
 		'german'					=> 'de([_-][a-z]+)?',
-		'english'					=> 'en([_-][a-z]+)?',
-		'estonian'					=> 'et',
-		'finnish'					=> 'fi',
-		'french'					=> 'fr([_-][a-z]+)?',
-		'greek'						=> 'el',
-		'spanish_argentina'			=> 'es[_-]ar',
-		'spanish'					=> 'es([_-][a-z]+)?',
-		'gaelic'					=> 'gd',
-		'galego'					=> 'gl',
-		'gujarati'					=> 'gu',
-		'hebrew'					=> 'he',
-		'hindi'						=> 'hi',
-		'croatian'					=> 'hr',
-		'hungarian'					=> 'hu',
-		'icelandic'					=> 'is',
-		'indonesian'				=> 'id([_-][a-z]+)?',
-		'italian'					=> 'it([_-][a-z]+)?',
-		'japanese'					=> 'ja([_-][a-z]+)?',
-		'korean'					=> 'ko([_-][a-z]+)?',
-		'latvian'					=> 'lv',
-		'lithuanian'				=> 'lt',
-		'macedonian'				=> 'mk',
-		'dutch'						=> 'nl([_-][a-z]+)?',
-		'norwegian'					=> 'no',
-		'punjabi'					=> 'pa',
-		'polish'					=> 'pl',
-		'portuguese_brazil'			=> 'pt[_-]br',
-		'portuguese'				=> 'pt([_-][a-z]+)?',
-		'romanian'					=> 'ro([_-][a-z]+)?',
-		'russian'					=> 'ru([_-][a-z]+)?',
-		'slovenian'					=> 'sl([_-][a-z]+)?',
-		'albanian'					=> 'sq',
-		'serbian'					=> 'sr([_-][a-z]+)?',
-		'slovak'					=> 'sv([_-][a-z]+)?',
-		'swedish'					=> 'sv([_-][a-z]+)?',
-		'thai'						=> 'th([_-][a-z]+)?',
-		'turkish'					=> 'tr([_-][a-z]+)?',
-		'ukranian'					=> 'uk([_-][a-z]+)?',
-		'urdu'						=> 'ur',
+		'english'					=> 'en([_-][a-z]+)?', 
+		'estonian'					=> 'et', 
+		'finnish'					=> 'fi', 
+		'french'					=> 'fr([_-][a-z]+)?', 
+		'greek'						=> 'el', 
+		'spanish_argentina'			=> 'es[_-]ar', 
+		'spanish'					=> 'es([_-][a-z]+)?', 
+		'gaelic'					=> 'gd', 
+		'galego'					=> 'gl', 
+		'gujarati'					=> 'gu', 
+		'hebrew'					=> 'he', 
+		'hindi'						=> 'hi', 
+		'croatian'					=> 'hr', 
+		'hungarian'					=> 'hu', 
+		'icelandic'					=> 'is', 
+		'indonesian'				=> 'id([_-][a-z]+)?', 
+		'italian'					=> 'it([_-][a-z]+)?', 
+		'japanese'					=> 'ja([_-][a-z]+)?', 
+		'korean'					=> 'ko([_-][a-z]+)?', 
+		'latvian'					=> 'lv', 
+		'lithuanian'				=> 'lt', 
+		'macedonian'				=> 'mk', 
+		'dutch'						=> 'nl([_-][a-z]+)?', 
+		'norwegian'					=> 'no', 
+		'punjabi'					=> 'pa', 
+		'polish'					=> 'pl', 
+		'portuguese_brazil'			=> 'pt[_-]br', 
+		'portuguese'				=> 'pt([_-][a-z]+)?', 
+		'romanian'					=> 'ro([_-][a-z]+)?', 
+		'russian'					=> 'ru([_-][a-z]+)?', 
+		'slovenian'					=> 'sl([_-][a-z]+)?', 
+		'albanian'					=> 'sq', 
+		'serbian'					=> 'sr([_-][a-z]+)?', 
+		'slovak'					=> 'sv([_-][a-z]+)?', 
+		'swedish'					=> 'sv([_-][a-z]+)?', 
+		'thai'						=> 'th([_-][a-z]+)?', 
+		'turkish'					=> 'tr([_-][a-z]+)?', 
+		'ukranian'					=> 'uk([_-][a-z]+)?', 
+		'urdu'						=> 'ur', 
 		'viatnamese'				=> 'vi',
 		'chinese_traditional_taiwan'=> 'zh[_-]tw',
-		'chinese_simplified'		=> 'zh',
+		'chinese_simplified'		=> 'zh', 
 	);
 
 	if (isset($HTTP_SERVER_VARS['HTTP_ACCEPT_LANGUAGE']))
@@ -222,7 +222,7 @@ function guess_lang()
 	}
 
 	return 'english';
-
+	
 }
 //
 // FUNCTIONS
@@ -334,42 +334,42 @@ include($phpbb_root_path.'includes/sessions.'.$phpEx);
 $available_dbms = array(
 	'mysql'=> array(
 		'LABEL'			=> 'MySQL 3.x',
-		'SCHEMA'		=> 'mysql',
+		'SCHEMA'		=> 'mysql', 
 		'DELIM'			=> ';',
 		'DELIM_BASIC'	=> ';',
 		'COMMENTS'		=> 'remove_remarks'
-	),
+	), 
 	'mysql4' => array(
-		'LABEL'			=> 'MySQL 4.x',
-		'SCHEMA'		=> 'mysql',
-		'DELIM'			=> ';',
+		'LABEL'			=> 'MySQL 4.x/5.x',
+		'SCHEMA'		=> 'mysql', 
+		'DELIM'			=> ';', 
 		'DELIM_BASIC'	=> ';',
 		'COMMENTS'		=> 'remove_remarks'
-	),
+	), 
 	'postgres' => array(
 		'LABEL'			=> 'PostgreSQL 7.x',
-		'SCHEMA'		=> 'postgres',
-		'DELIM'			=> ';',
+		'SCHEMA'		=> 'postgres', 
+		'DELIM'			=> ';', 
 		'DELIM_BASIC'	=> ';',
 		'COMMENTS'		=> 'remove_comments'
-	),
+	), 
 	'mssql' => array(
 		'LABEL'			=> 'MS SQL Server 7/2000',
-		'SCHEMA'		=> 'mssql',
-		'DELIM'			=> 'GO',
+		'SCHEMA'		=> 'mssql', 
+		'DELIM'			=> 'GO', 
 		'DELIM_BASIC'	=> ';',
 		'COMMENTS'		=> 'remove_comments'
 	),
 	'msaccess' => array(
 		'LABEL'			=> 'MS Access [ ODBC ]',
-		'SCHEMA'		=> '',
-		'DELIM'			=> '',
+		'SCHEMA'		=> '', 
+		'DELIM'			=> '', 
 		'DELIM_BASIC'	=> ';',
 		'COMMENTS'		=> ''
 	),
 	'mssql-odbc' =>	array(
 		'LABEL'			=> 'MS SQL Server [ ODBC ]',
-		'SCHEMA'		=> 'mssql',
+		'SCHEMA'		=> 'mssql', 
 		'DELIM'			=> 'GO',
 		'DELIM_BASIC'	=> ';',
 		'COMMENTS'		=> 'remove_comments'
@@ -490,7 +490,7 @@ if (!empty($HTTP_POST_VARS['send_file']) && $HTTP_POST_VARS['send_file'] == 1 &&
 	header('Content-disposition: attachment; filename="config.' . $phpEx . '"');
 
 	// We need to stripslashes no matter what the setting of magic_quotes_gpc is
-	// because we add slashes at the top if its off, and they are added automaticlly
+	// because we add slashes at the top if its off, and they are added automaticlly 
 	// if it is on.
 	echo stripslashes($HTTP_POST_VARS['config_data']);
 
@@ -596,14 +596,14 @@ else if (!empty($HTTP_POST_VARS['ftp_file']))
 
 		unlink($tmpfname);
 
-		if ($upgrade == 1)
+		if ($upgrade == 1)	
 		{
 			require('upgrade.'.$phpEx);
 			exit;
 		}
 
-		// Ok we are basically done with the install process let's go on
-		// and let the user configure their board now. We are going to do
+		// Ok we are basically done with the install process let's go on 
+		// and let the user configure their board now. We are going to do 
 		// this by calling the admin_board.php from the normal board admin
 		// section.
 		$s_hidden_fields = '<input type="hidden" name="username" value="' . $admin_name . '" />';
@@ -620,7 +620,7 @@ else if (!empty($HTTP_POST_VARS['ftp_file']))
 else if ((empty($install_step) || $admin_pass1 != $admin_pass2 || empty($admin_pass1) || empty($dbhost)))
 {
 	// Ok we haven't installed before so lets work our way through the various
-	// steps of the install process.  This could turn out to be quite a lengty
+	// steps of the install process.  This could turn out to be quite a lengty 
 	// process.
 
 	// Step 0 gather the pertinant info for database setup...
@@ -676,7 +676,7 @@ else if ((empty($install_step) || $admin_pass1 != $admin_pass2 || empty($admin_p
 	$upgrade_option .= 'onchange="if (this.options[this.selectedIndex].value == 1) { this.form.dbms.selectedIndex = 0; }">';
 	$upgrade_option .= '<option value="0">' . $lang['Install'] . '</option>';
 	$upgrade_option .= '<option value="1">' . $lang['Upgrade'] . '</option></select>';
-
+	
 	$s_hidden_fields = '<input type="hidden" name="install_step" value="1" /><input type="hidden" name="cur_lang" value="' . $language . '" />';
 
 	page_header($instruction_text);
@@ -738,11 +738,11 @@ else if ((empty($install_step) || $admin_pass1 != $admin_pass2 || empty($admin_p
 					<tr>
 						<td class="row1" align="right"><span class="gen"><?php echo $lang['Admin_email']; ?>: </span></td>
 						<td class="row2"><input type="text" name="board_email" value="<?php echo ($board_email != '') ? $board_email : ''; ?>" /></td>
-					</tr>
+					</tr> 
 					<tr>
 						<td class="row1" align="right"><span class="gen"><?php echo $lang['Server_name']; ?>: </span></td>
 						<td class="row2"><input type="text" name="server_name" value="<?php echo $server_name; ?>" /></td>
-					</tr>
+					</tr> 
 					<tr>
 						<td class="row1" align="right"><span class="gen"><?php echo $lang['Server_port']; ?>: </span></td>
 						<td class="row2"><input type="text" name="server_port" value="<?php echo $server_port; ?>" /></td>
@@ -804,7 +804,7 @@ else
 		}
 
 		if (!extension_loaded($check_exts) && !extension_loaded($check_other))
-		{
+		{	
 			page_header($lang['Install'], '');
 			page_error($lang['Installer_Error'], $lang['Install_No_Ext']);
 			page_footer();
@@ -818,8 +818,8 @@ else
 	$dbms_basic = 'schemas/' . $available_dbms[$dbms]['SCHEMA'] . '_basic.sql';
 
 	$remove_remarks = $available_dbms[$dbms]['COMMENTS'];;
-	$delimiter = $available_dbms[$dbms]['DELIM'];
-	$delimiter_basic = $available_dbms[$dbms]['DELIM_BASIC'];
+	$delimiter = $available_dbms[$dbms]['DELIM']; 
+	$delimiter_basic = $available_dbms[$dbms]['DELIM_BASIC']; 
 
 	if ($install_step == 1)
 	{
@@ -847,7 +847,7 @@ else
 						if (!($result = $db->sql_query($sql_query[$i])))
 						{
 							$error = $db->sql_error();
-
+			
 							page_header($lang['Install'], '');
 							page_error($lang['Installer_Error'], $lang['Install_db_error'] . '<br />' . $error['message']);
 							page_footer();
@@ -855,7 +855,7 @@ else
 						}
 					}
 				}
-
+		
 				// Ok tables have been built, let's fill in the basic information
 				$sql_query = @fread(@fopen($dbms_basic, 'r'), @filesize($dbms_basic));
 				$sql_query = preg_replace('/phpbb_/', $table_prefix, $sql_query);
@@ -880,7 +880,7 @@ else
 				}
 			}
 
-			// Ok at this point they have entered their admin password, let's go
+			// Ok at this point they have entered their admin password, let's go 
 			// ahead and create the admin account with some basic default information
 			// that they can customize later, and write out the config file.  After
 			// this we are going to pass them over to the admin_forum.php script
@@ -888,14 +888,14 @@ else
 			$error = '';
 
 			// Update the default admin user with their information.
-			$sql = "INSERT INTO " . $table_prefix . "config (config_name, config_value)
+			$sql = "INSERT INTO " . $table_prefix . "config (config_name, config_value) 
 				VALUES ('board_startdate', " . time() . ")";
 			if (!$db->sql_query($sql))
 			{
 				$error .= "Could not insert board_startdate :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "INSERT INTO " . $table_prefix . "config (config_name, config_value)
+			$sql = "INSERT INTO " . $table_prefix . "config (config_name, config_value) 
 				VALUES ('default_lang', '" . str_replace("\'", "''", $language) . "')";
 			if (!$db->sql_query($sql))
 			{
@@ -911,8 +911,8 @@ else
 
 			while (list($config_name, $config_value) = each($update_config))
 			{
-				$sql = "UPDATE " . $table_prefix . "config
-					SET config_value = '$config_value'
+				$sql = "UPDATE " . $table_prefix . "config 
+					SET config_value = '$config_value' 
 					WHERE config_name = '$config_name'";
 				if (!$db->sql_query($sql))
 				{
@@ -922,7 +922,7 @@ else
 
 			$admin_pass_md5 = ($confirm && $userdata['user_level'] == ADMIN) ? $admin_pass1 : md5($admin_pass1);
 
-			$sql = "UPDATE " . $table_prefix . "users
+			$sql = "UPDATE " . $table_prefix . "users 
 				SET username = '" . str_replace("\'", "''", $admin_name) . "', user_password='" . str_replace("\'", "''", $admin_pass_md5) . "', user_lang = '" . str_replace("\'", "''", $language) . "', user_email='" . str_replace("\'", "''", $board_email) . "'
 				WHERE username = 'Admin'";
 			if (!$db->sql_query($sql))
@@ -930,7 +930,7 @@ else
 				$error .= "Could not update admin info :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . "<br /><br />";
 			}
 
-			$sql = "UPDATE " . $table_prefix . "users
+			$sql = "UPDATE " . $table_prefix . "users 
 				SET user_regdate = " . time();
 			if (!$db->sql_query($sql))
 			{
@@ -957,7 +957,7 @@ else
 			$config_data .= '$dbuser = \'' . $dbuser . '\';' . "\n";
 			$config_data .= '$dbpasswd = \'' . $dbpasswd . '\';' . "\n\n";
 			$config_data .= '$table_prefix = \'' . $table_prefix . '\';' . "\n\n";
-			$config_data .= 'define(\'PHPBB_INSTALLED\', true);'."\n\n";
+			$config_data .= 'define(\'PHPBB_INSTALLED\', true);'."\n\n";	
 			$config_data .= '?' . '>'; // Done this to prevent highlighting editors getting confused!
 
 			@umask(0111);
@@ -985,7 +985,7 @@ else
 						<td class="row1" align="right" width="50%"><span class="gen"><?php echo $lang['Send_file']; ?></span></td>
 						<td class="row2"><input type="radio" name="send_file" value="1"></td>
 					</tr>
-<?php
+<?php 
 
 				}
 				else
@@ -1037,7 +1037,7 @@ else
 			exit;
 		}
 
-		// Ok we are basically done with the install process let's go on
+		// Ok we are basically done with the install process let's go on 
 		// and let the user configure their board now. We are going to do
 		// this by calling the admin_board.php from the normal board admin
 		// section.
