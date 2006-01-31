@@ -6,7 +6,7 @@
 *     copyright            : (C) 2001 The phpBB Group
 *     email                : support@phpbb.com
 *
-*     $Id: admin_db_utilities.php,v 1.2 2006/01/10 21:15:08 squareing Exp $
+*     $Id: admin_db_utilities.php,v 1.3 2006/01/31 20:19:07 bitweaver Exp $
 *
 ****************************************************************************/
 
@@ -241,15 +241,15 @@ function get_table_def_postgresql($table, $crlf)
 	// Get the listing of primary keys.
 	//
 
-	$sql_pri_keys = "SELECT ic.relname AS index_name, bc.relname AS tab_name, ta.attname AS column_name, i.indisunique AS unique_key, i.indisprimary AS primary_key
-		FROM pg_class bc, pg_class ic, pg_index i, pg_attribute ta, pg_attribute ia
+	$sql_pri_keys = "SELECT ic.relname AS index_name, bc.relname AS tab_name, a.attname AS column_name, i.indisunique AS unique_key, i.indisprimary AS primary_key
+		FROM pg_class bc, pg_class ic, pg_index i, pg_attribute a, pg_attribute ia
 		WHERE (bc.oid = i.indrelid)
 			AND (ic.oid = i.indexrelid)
 			AND (ia.attrelid = i.indexrelid)
-			AND	(ta.attrelid = bc.oid)
+			AND	(a.attrelid = bc.oid)
 			AND (bc.relname = '$table')
-			AND (ta.attrelid = i.indrelid)
-			AND (ta.attnum = i.indkey[ia.attnum-1])
+			AND (a.attrelid = i.indrelid)
+			AND (a.attnum = i.indkey[ia.attnum-1])
 		ORDER BY index_name, tab_name, column_name ";
 	$result = $db->sql_query($sql_pri_keys);
 
