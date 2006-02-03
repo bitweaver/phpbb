@@ -2,7 +2,7 @@
 
 class PhpBBLib {
 	function PhpBBLib() {
-		global $gBitSmarty, $modlib, $gBitSystem, $gQueryUser, $module_rows, $module_params, $wikilib, $db, $phpbb_root_path, $phpEx;
+		global $gBitSmarty, $gBitThemes, $gBitSystem, $gQueryUser, $module_rows, $module_params, $wikilib, $db, $phpbb_root_path, $phpEx;
 		if( !defined( 'IN_PHPBB' ) ) {
 			define ('IN_PHPBB', TRUE);
 		}
