@@ -258,7 +258,7 @@ while( $row = $db->sql_fetchrow($result) )
 
 $db->sql_freeresult($result);
 
-$maxTopics = ( $gBitSystem->getPreference( 'max_records', 20 ) );
+$maxTopics = ( $gBitSystem->getConfig( 'max_records', 20 ) );
 
 //
 // Grab all the basic data (all topics except announcements)
