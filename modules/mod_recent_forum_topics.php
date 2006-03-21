@@ -14,7 +14,8 @@ if( defined( 'PHPBB_INSTALLED' ) ) {
 
 	$whereSql = '';
 	$forumSpecific = FALSE;
-	if( !empty( $module_params['f'] ) || !empty( $module_params['forum'] ) ) {
+	if( !empty( $module_params['f'] ) || !empty( $module_params['forum_id'] ) ) {
+		$module_params['f'] = $module_params['forum_id'];
 		$whereSql = ' AND f.forum_id='.$module_params['f'];
 		$forumSpecific = TRUE;
 	}
@@ -40,6 +41,8 @@ if( defined( 'PHPBB_INSTALLED' ) ) {
 		$linkTitle = '<a href="'.PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'].'">'.$forumTopics[0]['forum_name'].'</a>';
 		$gBitSmarty->assign_by_ref('forumTitle', $linkTitle );
 		$gBitSmarty->assign( 'forumUrl', PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'] );
+	} else {
+		$gBitSmarty->assign( 'forumUrl', PHPBB_PKG_URL );
 	}
 }
 
