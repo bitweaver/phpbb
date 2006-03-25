@@ -14,8 +14,10 @@ if( defined( 'PHPBB_INSTALLED' ) ) {
 
 	$whereSql = '';
 	$forumSpecific = FALSE;
-	if( !empty( $module_params['f'] ) || !empty( $module_params['forum'] ) ) {
-		$module_params['f'] = $module_params['forum'];
+	if( !empty( $module_params['forum'] ) ) {
+		$whereSql = ' AND f.forum_id='.$module_params['forum'];
+		$forumSpecific = TRUE;
+	} elseif( !empty( $module_params['f'] ) ) {
 		$whereSql = ' AND f.forum_id='.$module_params['f'];
 		$forumSpecific = TRUE;
 	}
