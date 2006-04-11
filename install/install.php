@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: install.php,v 1.4 2006/01/10 21:15:10 squareing Exp $
+ *   $Id: install.php,v 1.5 2006/04/11 13:07:29 squareing Exp $
  *
  ***************************************************************************/
 
@@ -23,7 +23,7 @@
 // Make sure only bitweaver admins can run the installer
 require_once( '../../bit_setup_inc.php' );
 global $gBitSystem;
-$gBitSystem->verifyPermission( 'bit_p_admin' );
+$gBitSystem->verifyPermission( 'p_admin' );
 // }}} BIT_MOD
 
 // ---------
