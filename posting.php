@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: posting.php,v 1.1.1.1.2.2 2006/01/02 09:44:49 squareing Exp $
+ *   $Id: posting.php,v 1.1.1.1.2.3 2006/04/17 20:20:54 southpawz Exp $
  *
  *
  ***************************************************************************/
@@ -632,7 +632,7 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 			}
 			else if ( !empty($option_text) ) 
 			{
-				$poll_options[$option_id] = htmlspecialchars(trim(stripslashes($option_text)));
+				$poll_options[intval($option_id)] = htmlspecialchars(trim(stripslashes($option_text)));
 			}
 		}
 	}

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: pagestart.php,v 1.1.1.1.2.2 2006/01/02 09:44:49 squareing Exp $
+ *   $Id: pagestart.php,v 1.1.1.1.2.3 2006/04/17 20:20:54 southpawz Exp $
  *
  *
  ***************************************************************************/
@@ -49,13 +49,6 @@ else if ($userdata['user_level'] != ADMIN)
 
 if ($HTTP_GET_VARS['sid'] != $userdata['session_id'])
 {
-	$url = str_replace(preg_replace('#^\/?(.*?)\/?$#', '\1', trim($board_config['server_name'])), '', $HTTP_SERVER_VARS['REQUEST_URI']);
-	$url = str_replace(preg_replace('#^\/?(.*?)\/?$#', '\1', trim($board_config['script_path'])), '', $url);
-	$url = str_replace('//', '/', $url);
-	$url = preg_replace('/sid=([^&]*)(&?)/i', '', $url);
-	$url = preg_replace('/\?$/', '', $url);
-	$url .= ((strpos($url, '?')) ? '&' : '?') . 'sid=' . $userdata['session_id'];
-
 	redirect("index.$phpEx?sid=" . $userdata['session_id']);
 }
 

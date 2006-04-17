@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: viewtopic.php,v 1.1.1.1.2.4 2006/01/02 09:44:49 squareing Exp $
+ *   $Id: viewtopic.php,v 1.1.1.1.2.5 2006/04/17 20:20:54 southpawz Exp $
  *
  *
  ***************************************************************************/

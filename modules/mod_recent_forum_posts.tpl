@@ -1,4 +1,4 @@
-{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_posts.tpl,v 1.1.1.1.2.4 2005/10/24 09:15:42 bitweaver Exp $ *}
+{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_posts.tpl,v 1.1.1.1.2.5 2006/04/17 20:21:14 southpawz Exp $ *}
 {if $forumPosts || $showEmpty}
 {assign var="moduleTitle" value="{tr}Recent Forum Posts{/tr}"}
 {if $forumTitle}

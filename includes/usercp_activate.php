@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_activate.php,v 1.1.1.1.2.2 2006/01/02 09:44:50 squareing Exp $
+ *   $Id: usercp_activate.php,v 1.1.1.1.2.3 2006/04/17 20:20:55 southpawz Exp $
  *
  *
  ***************************************************************************/

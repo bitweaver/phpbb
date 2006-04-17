@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_footer_admin.php,v 1.1.1.1.2.1 2006/01/02 09:44:49 squareing Exp $
+ *   $Id: page_footer_admin.php,v 1.1.1.1.2.2 2006/04/17 20:20:54 southpawz Exp $
  *
  *
  ***************************************************************************/

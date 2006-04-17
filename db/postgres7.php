@@ -6,7 +6,7 @@
    *   copyright            : (C) 2001 The phpBB Group
    *   email                : supportphpbb.com
    *
-   *   $Id: postgres7.php,v 1.1.1.1.2.1 2006/01/02 09:44:49 squareing Exp $
+   *   $Id: postgres7.php,v 1.1.1.1.2.2 2006/04/17 20:20:55 southpawz Exp $
    *
    ***************************************************************************/
 

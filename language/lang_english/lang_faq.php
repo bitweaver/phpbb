@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: lang_faq.php,v 1.1.1.1.2.1 2006/01/02 09:44:50 squareing Exp $
+ *   $Id: lang_faq.php,v 1.1.1.1.2.2 2006/04/17 20:21:13 southpawz Exp $
  *
  *
  ***************************************************************************/
