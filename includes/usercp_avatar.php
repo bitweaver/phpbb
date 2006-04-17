@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_avatar.php,v 1.5 2006/01/10 21:15:10 squareing Exp $
+ *   $Id: usercp_avatar.php,v 1.6 2006/04/17 18:46:13 southpawz Exp $
  *
  *
  ***************************************************************************/
@@ -99,7 +99,8 @@ function user_avatar_url($mode, &$error, &$error_msg, $avatar_filename)
 	{
 		$avatar_filename = 'http://' . $avatar_filename;
 	}
-
+	$avatar_filename = substr($avatar_filename, 0, 100);
+	
 	if ( !preg_match("#^((ht|f)tp://)([^ \?&=\#\"\n\r\t<]*?(\.(jpg|jpeg|gif|png))$)#is", $avatar_filename) )
 	{
 		$error = true;

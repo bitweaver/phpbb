@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: modcp.php,v 1.3 2006/01/10 21:15:08 squareing Exp $
+ *   $Id: modcp.php,v 1.4 2006/04/17 18:50:27 southpawz Exp $
  *
  ***************************************************************************/
 
@@ -230,6 +230,10 @@ switch( $mode )
 
 		if ( $confirm )
 		{
+  			if ( empty($HTTP_POST_VARS['topic_id_list']) && empty($topic_id) )
+			{
+				message_die(GENERAL_MESSAGE, $lang['None_selected']);
+			}
 			include($phpbb_root_path . 'includes/functions_search.'.$phpEx);
 
 			$topics = ( isset($HTTP_POST_VARS['topic_id_list']) ) ? $HTTP_POST_VARS['topic_id_list'] : array($topic_id);
@@ -256,6 +260,11 @@ switch( $mode )
 			}
 			$db->sql_freeresult($result);
 
+			if ( $topic_id_sql == '')
+			{
+				message_die(GENERAL_MESSAGE, $lang['None_selected']);
+			}
+			
 			$sql = "SELECT poster_id, COUNT(post_id) AS posts 
 				FROM " . POSTS_TABLE . " 
 				WHERE topic_id IN ($topic_id_sql) 
@@ -737,6 +746,11 @@ switch( $mode )
 			}
 			$db->sql_freeresult($result);
 
+			if ($post_id_sql == '')
+			{
+				message_die(GENERAL_MESSAGE, $lang['None_selected']);
+			}
+
 			$sql = "SELECT post_id, poster_id, topic_id, post_time
 				FROM " . POSTS_TABLE . "
 				WHERE post_id IN ($post_id_sql) 
@@ -987,7 +1001,7 @@ switch( $mode )
 		}
 
 		$ip_this_post = decode_ip($post_row['poster_ip']);
-		$ip_this_post = ( $rdns_ip_num == $ip_this_post ) ? gethostbyaddr($ip_this_post) : $ip_this_post;
+		$ip_this_post = ( $rdns_ip_num == $ip_this_post ) ? htmlspecialchars(gethostbyaddr($ip_this_post)) : $ip_this_post;
 
 		$poster_id = $post_row['poster_id'];
 
@@ -1033,7 +1047,7 @@ switch( $mode )
 				}
 
 				$ip = decode_ip($row['poster_ip']);
-				$ip = ( $rdns_ip_num == $row['poster_ip'] || $rdns_ip_num == 'all') ? gethostbyaddr($ip) : $ip;
+				$ip = ( $rdns_ip_num == $row['poster_ip'] || $rdns_ip_num == 'all') ? htmlspecialchars(gethostbyaddr($ip)) : $ip;
 
 				$row_color = ( !($i % 2) ) ? $theme['td_color1'] : $theme['td_color2'];
 				$row_class = ( !($i % 2) ) ? $theme['td_class1'] : $theme['td_class2'];

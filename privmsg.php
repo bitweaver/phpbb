@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: privmsg.php,v 1.4 2006/01/10 21:15:08 squareing Exp $
+ *   $Id: privmsg.php,v 1.5 2006/04/17 18:50:28 southpawz Exp $
  *
  *
  ***************************************************************************/
@@ -1187,7 +1187,7 @@ else if ( $submit || $refresh || $mode != '' )
 			$error_msg .= ( ( !empty($error_msg) ) ? '<br />' : '' ) . $lang['No_to_user'];
 		}
 
-		$privmsg_subject = trim(strip_tags($HTTP_POST_VARS['subject']));
+		$privmsg_subject = trim(htmlspecialchars($HTTP_POST_VARS['subject']));
 		if ( empty($privmsg_subject) )
 		{
 			$error = TRUE;
@@ -1309,7 +1309,7 @@ else if ( $submit || $refresh || $mode != '' )
 
 		if ( !$db->sql_query($sql, END_TRANSACTION) )
 		{
-			message_die(GENERAL_ERROR, "Could not insert/update private message sent text.", "", __LINE__, __FILE__, $sql_info);
+			message_die(GENERAL_ERROR, "Could not insert/update private message sent text.", "", __LINE__, __FILE__, $sql);
 		}
 
 		if ( $mode != 'edit' )
@@ -1374,7 +1374,7 @@ else if ( $submit || $refresh || $mode != '' )
 		//
 		$to_username = (isset($HTTP_POST_VARS['username']) ) ? trim(htmlspecialchars(stripslashes($HTTP_POST_VARS['username']))) : '';
 
-		$privmsg_subject = ( isset($HTTP_POST_VARS['subject']) ) ? trim(strip_tags(stripslashes($HTTP_POST_VARS['subject']))) : '';
+		$privmsg_subject = ( isset($HTTP_POST_VARS['subject']) ) ? trim(htmlspecialchars(stripslashes($HTTP_POST_VARS['subject']))) : '';
 		$privmsg_message = ( isset($HTTP_POST_VARS['message']) ) ? trim($HTTP_POST_VARS['message']) : '';
 		$privmsg_message = preg_replace('#<textarea>#si', '&lt;textarea&gt;', $privmsg_message);
 		if ( !$preview )
@@ -1507,7 +1507,11 @@ else if ( $submit || $refresh || $mode != '' )
 				redirect(append_sid("privmsg.$phpEx?folder=$folder", true));
 			}
 
+			$orig_word = $replacement_word = array();
+			obtain_word_list($orig_word, $replace_word);
+
 			$privmsg_subject = ( ( !preg_match('/^Re:/', $privmsg['privmsgs_subject']) ) ? 'Re: ' : '' ) . $privmsg['privmsgs_subject'];
+			$privmsg_subject = preg_replace($orig_word, $replacement_word, $privmsg_subject);
 
 			$to_username = $privmsg['username'];
 			$to_userid = $privmsg['user_id'];
@@ -1520,6 +1524,7 @@ else if ( $submit || $refresh || $mode != '' )
 				$privmsg_message = preg_replace("/\:(([a-z0-9]:)?)$privmsg_bbcode_uid/si", '', $privmsg_message);
 				$privmsg_message = str_replace('<br />', "\n", $privmsg_message);
 				$privmsg_message = preg_replace('#</textarea>#si', '&lt;/textarea&gt;', $privmsg_message);
+				$privmsg_message = preg_replace($orig_word, $replacement_word, $privmsg_message);
 				
 				$msg_date =  create_date($board_config['default_dateformat'], $privmsg['privmsgs_date'], $board_config['board_timezone']); 
 
@@ -1743,9 +1748,6 @@ else if ( $submit || $refresh || $mode != '' )
 	// {{{ BIT_MOD
 	Multi_BBCode();
 	// }}} BIT_MOD
-
-	$privmsg_subject = preg_replace($html_entities_match, $html_entities_replace, $privmsg_subject);
-	$privmsg_subject = str_replace('"', '&quot;', $privmsg_subject);
 
 	$template->assign_vars(array(
 		'SUBJECT' => $privmsg_subject, 

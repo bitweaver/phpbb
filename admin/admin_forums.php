@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_forums.php,v 1.2 2006/01/10 21:15:08 squareing Exp $
+ *   $Id: admin_forums.php,v 1.3 2006/04/17 18:44:16 southpawz Exp $
  *
  ***************************************************************************/
 
@@ -39,8 +39,8 @@ include($phpbb_root_path . 'includes/functions_admin.'.$phpEx);
 $forum_auth_ary = array(
 	"auth_view" => AUTH_ALL, 
 	"auth_read" => AUTH_ALL, 
-	"auth_post" => AUTH_ALL, 
-	"auth_reply" => AUTH_ALL, 
+	"auth_post" => AUTH_REG, 
+	"auth_reply" => AUTH_REG, 
 	"auth_edit" => AUTH_REG, 
 	"auth_delete" => AUTH_REG, 
 	"auth_sticky" => AUTH_MOD, 

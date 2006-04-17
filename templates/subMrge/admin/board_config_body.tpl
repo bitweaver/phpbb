@@ -46,6 +46,8 @@
 	<tr>
 		<td class="odd">{L_FLOOD_INTERVAL} <br /><small>{L_FLOOD_INTERVAL_EXPLAIN}</span></td>
 		<td class="even"><input class="post" type="text" size="3" maxlength="4" name="flood_interval" value="{FLOOD_INTERVAL}" /></td>
+		<td class="odd">{L_SEARCH_FLOOD_INTERVAL} <br /><span class="gensmall">{L_SEARCH_FLOOD_INTERVAL_EXPLAIN}</span></td>
+		<td class="even"><input class="post" type="text" size="3" maxlength="4" name="search_flood_interval" value="{SEARCH_FLOOD_INTERVAL}" /></td>
 	</tr>
 	<tr>
 		<td class="odd">{L_TOPICS_PER_PAGE}</td>

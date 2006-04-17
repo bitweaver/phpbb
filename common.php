@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: common.php,v 1.2 2006/01/10 21:15:08 squareing Exp $
+ *   $Id: common.php,v 1.3 2006/04/17 18:50:27 southpawz Exp $
  *
  ***************************************************************************/
 
@@ -170,6 +170,7 @@ $theme = array();
 $images = array();
 $lang = array();
 $nav_links = array();
+$dss_seeded = false;
 $gen_simple_header = FALSE;
 
 // {{{ BIT_MOD
