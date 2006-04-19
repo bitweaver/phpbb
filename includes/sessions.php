@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: sessions.php,v 1.6 2006/04/17 18:46:13 southpawz Exp $
+ *   $Id: sessions.php,v 1.7 2006/04/19 16:12:38 spiderr Exp $
  *
  *
  ***************************************************************************/
@@ -431,7 +431,7 @@ function check_bit_user( &$p_user_data ) {
 			}
 			$user_row = $db->sql_fetchrow($result);
 //vd( $user_row );
-			$md5 = $gBitSystem->isFeatureActive( 'clear_passwords' );
+			$md5 = $gBitSystem->isFeatureActive( 'users_clear_passwords' );
 			$phpbb_password = ( $md5 ? $gBitUser->mInfo['password'] : md5( $gBitUser->mInfo['password'] ) );
 			// nuke their existing session cause it stores anonymous_id (-1) initially
 			$sql = "DELETE FROM " . SESSIONS_TABLE . "
