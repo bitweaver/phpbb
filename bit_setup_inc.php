@@ -4,6 +4,7 @@ global $gBitSystem;
 $registerHash = array(
 	'package_name' => 'phpbb',
 	'package_path' => dirname( __FILE__ ).'/',
+	'homeable' => TRUE,
 );
 $gBitSystem->registerPackage( $registerHash );
 
