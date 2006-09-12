@@ -9,7 +9,13 @@ $registerHash = array(
 $gBitSystem->registerPackage( $registerHash );
 
 if( $gBitSystem->isPackageActive( 'phpbb' ) ) {
-	$gBitSystem->registerAppMenu( PHPBB_PKG_NAME, ucfirst( PHPBB_PKG_DIR ), PHPBB_PKG_URL.'index.php', 'bitpackage:phpbb/menu_phpbb.tpl' );
+	$menuHash = array(
+		'package_name'  => PHPBB_PKG_NAME,
+		'index_url'     => PHPBB_PKG_URL.'index.php',
+		'menu_template' => 'bitpackage:phpbb/menu_phpbb.tpl',
+	);
+	$gBitSystem->registerAppMenu( $menuHash );
+
 	if( file_exists( PHPBB_PKG_PATH.'config.php' ) ) {
 		require_once( PHPBB_PKG_PATH.'config.php' );
 	}
