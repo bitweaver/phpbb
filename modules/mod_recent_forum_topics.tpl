@@ -1,8 +1,10 @@
-{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_topics.tpl,v 1.3 2005/10/12 15:13:54 spiderr Exp $ *}
-{if $forumTopics || $showEmpty}
-{assign var="moduleTitle" value="{tr}Recent Forum Topics{/tr}"}
-{if $forumTitle}
-	{assign var="moduleTitle" value="`$moduleTitle` {tr}in{/tr} `$forumTitle`"}
+{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_topics.tpl,v 1.4 2007/02/05 02:50:15 spiderr Exp $ *}
+{if !$moduleTitle}
+	{if $forumTopics || $showEmpty}
+	{assign var="moduleTitle" value="{tr}Recent Forum Topics{/tr}"}
+	{if $forumTitle}
+		{assign var="moduleTitle" value="`$moduleTitle` {tr}in{/tr} `$forumTitle`"}
+	{/if}
 {/if}
 {strip}
 {bitmodule title="$moduleTitle" name="recent_forum_topics"}
