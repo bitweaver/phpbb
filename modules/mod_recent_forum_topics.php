@@ -5,8 +5,8 @@ if( defined( 'PHPBB_INSTALLED' ) ) {
 	$phpbb_root_path = PHPBB_PKG_PATH;
 	$phpEx = 'php';
 
-	global $gBitSmarty, $gBitThemes, $gBitSystem, $gQueryUser, $module_rows, $module_params, $wikilib, $db;
-
+	global $gBitSmarty, $gBitThemes, $gBitSystem, $gQueryUser, $moduleParams, $wikilib, $db;
+	
 	// common.php sets up everything we need to acccess the phpbb database
 	if( empty( $db ) ) {
 		require_once( PHPBB_PKG_PATH.'common.php');
@@ -30,7 +30,7 @@ if( defined( 'PHPBB_INSTALLED' ) ) {
 			FROM ".FORUMS_TABLE." f, ".TOPICS_TABLE." t
 			WHERE f.forum_id = t.forum_id $whereSql
 			ORDER BY t.topic_time DESC
-			LIMIT $module_rows;";
+			LIMIT $moduleParams[module_rows];";
 
 	if (!($result = $db->sql_query($sql)) ) {
 		print("Unable to query forum posts: $sql");
