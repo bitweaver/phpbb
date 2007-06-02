@@ -5,7 +5,7 @@ if( defined( 'PHPBB_INSTALLED' ) ) {
 	$phpbb_root_path = PHPBB_PKG_PATH;
 	$phpEx = 'php';
 
-	global $gBitSmarty, $gBitThemes, $gBitSystem, $gQueryUser, $moduleParams, $wikilib, $db;
+	global $gBitSmarty, $gBitThemes, $gBitSystem, $gQueryUser, $moduleParams, $db;
 	
 	// common.php sets up everything we need to acccess the phpbb database
 	if( empty( $db ) ) {
