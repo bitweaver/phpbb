@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: common.php,v 1.3 2006/04/17 18:50:27 southpawz Exp $
+ *   $Id: common.php,v 1.4 2010/02/08 21:27:24 wjames5 Exp $
  *
  ***************************************************************************/
 
@@ -183,7 +183,7 @@ if( !defined("PHPBB_INSTALLED") )
 	exit;
 }
 
-require_once( $phpbb_root_path.'/../bit_setup_inc.php' );
+require_once( $phpbb_root_path.'/../kernel/setup_inc.php' );
 //phpBB is not as clean as tiki. errors only
 error_reporting ( E_ALL & ~E_NOTICE );
 // }}} BIT_MOD
