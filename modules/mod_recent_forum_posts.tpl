@@ -1,4 +1,4 @@
-{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_posts.tpl,v 1.6 2007/02/05 02:50:15 spiderr Exp $ *}
+{* $Header$ *}
 {if $forumPosts || $showEmpty}
 {if !$moduleTitle}
 	{assign var="moduleTitle" value="{tr}Recent Forum Posts{/tr}"}

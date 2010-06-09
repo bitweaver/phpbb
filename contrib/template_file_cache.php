@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: template_file_cache.php,v 1.2 2005/07/25 20:02:21 squareing Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

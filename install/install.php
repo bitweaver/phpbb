@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: install.php,v 1.6 2010/02/08 21:27:24 wjames5 Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

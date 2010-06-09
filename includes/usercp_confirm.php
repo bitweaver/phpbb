@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_confirm.php,v 1.3 2006/04/17 18:46:13 southpawz Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: viewforum.php,v 1.3 2005/10/12 15:13:53 spiderr Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

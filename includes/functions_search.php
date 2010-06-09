@@ -6,7 +6,7 @@
 *     copyright            : (C) 2002 The phpBB Group
 *     email                : support@phpbb.com
 *
-*     $Id: functions_search.php,v 1.2 2006/01/10 21:15:10 squareing Exp $
+*     $Id$
 *
 ****************************************************************************/
 

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: update_to_latest.php,v 1.5 2006/04/17 18:46:56 southpawz Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

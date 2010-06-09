@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : supportphpbb.com
  *
- *   $Id: mysql4.php,v 1.3 2006/01/10 21:15:09 squareing Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

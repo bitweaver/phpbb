@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: login.php,v 1.3 2006/04/17 18:50:27 southpawz Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

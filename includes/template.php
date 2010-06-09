@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: template.php,v 1.1 2005/06/19 04:59:56 bitweaver Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

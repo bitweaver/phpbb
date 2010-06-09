@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: privmsg.php,v 1.5 2006/04/17 18:50:28 southpawz Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

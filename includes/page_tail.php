@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_tail.php,v 1.7 2008/06/25 22:21:15 spiderr Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

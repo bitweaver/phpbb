@@ -1,4 +1,4 @@
-{* $Header: /cvsroot/bitweaver/_phpbb/modules/mod_recent_forum_topics.tpl,v 1.5 2007/02/05 03:12:22 spiderr Exp $ *}
+{* $Header$ *}
 {if $forumTopics || $showEmpty}
 
 {if !$moduleTitle}

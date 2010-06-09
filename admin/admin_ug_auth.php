@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_ug_auth.php,v 1.5 2006/01/10 21:15:08 squareing Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

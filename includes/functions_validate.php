@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: functions_validate.php,v 1.4 2006/04/19 16:12:37 spiderr Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

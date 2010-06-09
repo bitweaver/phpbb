@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_header.php,v 1.4 2006/01/10 21:15:10 squareing Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

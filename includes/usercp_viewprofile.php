@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_viewprofile.php,v 1.3 2006/01/10 21:15:10 squareing Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

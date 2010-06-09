@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : supportphpbb.com
  *
- *   $Id: mssql.php,v 1.2 2006/04/17 18:45:04 southpawz Exp $
+ *   $Id$
  *
  ***************************************************************************/
 

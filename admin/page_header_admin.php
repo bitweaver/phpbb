@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_header_admin.php,v 1.2 2006/04/17 18:44:16 southpawz Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/

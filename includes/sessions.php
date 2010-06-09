@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: sessions.php,v 1.8 2006/06/09 17:28:28 windblown Exp $
+ *   $Id$
  *
  *
  ***************************************************************************/
