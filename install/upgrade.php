@@ -386,7 +386,7 @@ function inarray($needle, $haystack)
 
 function end_step($next)
 {
-	print "<hr /><a href=\"$PHP_SELF?next=$next\">Next step: <b>$next</b></a><br /><br />\n";
+	print "<hr /><a href=\"$_SERVER[SCRIPT_NAME]?next=$next\">Next step: <b>$next</b></a><br /><br />\n";
 	exit;
 }
 //

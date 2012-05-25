@@ -170,7 +170,7 @@ h3 {font-size:12pt;color:blue}
 <tr> 
 <td class="row1" align="right"><span class="gen">Database type: </span></td> 
 <td class="row2"> 
-<form action="<?php echo $HTTP_SERVER_VARS['PHP_SELF']; ?>" method="post"> 
+<form action="<?php echo $HTTP_SERVER_VARS['SCRIPT_NAME']; ?>" method="post"> 
 <select name="dbms"> 
 <?php 
 /* loop through the dbms, with the correct one selected (hopefully!) */ 
@@ -437,7 +437,7 @@ else
                 echo 'Either copy the <b>19</b> lines below and save them as <u>config.php</u> or click on the <u>Download</u> button below. Then upload the file to your phpBB2 root directory (phpBB2/ by default). Make sure that there is nothing (this includes blank spaces) after the <u>?></u>.<br /><br />'; 
 
                 /* Create our config file */ 
-                echo '<form action="' . $HTTP_SERVER_VARS['PHP_SELF'] . '" method="post"><table cellspacing="1" cellpadding="3" border="0"><tr><td class="code">'; 
+                echo '<form action="' . $HTTP_SERVER_VARS['SCRIPT_NAME'] . '" method="post"><table cellspacing="1" cellpadding="3" border="0"><tr><td class="code">'; 
                 echo make_config($dbms, $dbhost, $dbname, $dbuser, $dbpasswd, $table_prefix); 
                 echo '</td></tr></table>'; 
                 echo '<input type="hidden" name="dbms" value="' . $dbms . '" />'; 
