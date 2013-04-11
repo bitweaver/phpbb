@@ -37,11 +37,11 @@ if( defined( 'PHPBB_INSTALLED' ) ) {
 	}
 
 	$forumTopics = $db->sql_fetchrowset($result);
-	$gBitSmarty->assign_by_ref('forumTopics', $forumTopics);
+	$_template->tpl_vars['forumTopics'] = new Smarty_variable( $forumTopics);
 
 	if( $forumSpecific && !empty( $forumTopics[0] ) ) {
 		$linkTitle = '<a href="'.PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'].'">'.$forumTopics[0]['forum_name'].'</a>';
-		$gBitSmarty->assign_by_ref('forumTitle', $linkTitle );
+		$_template->tpl_vars['forumTitle'] = new Smarty_variable( $linkTitle );
 		$_template->tpl_vars['forumUrl'] = new Smarty_variable( PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'] );
 	} else {
 		$_template->tpl_vars['forumUrl'] = new Smarty_variable( PHPBB_PKG_URL );
