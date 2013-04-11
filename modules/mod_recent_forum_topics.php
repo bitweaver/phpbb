@@ -42,9 +42,9 @@ if( defined( 'PHPBB_INSTALLED' ) ) {
 	if( $forumSpecific && !empty( $forumTopics[0] ) ) {
 		$linkTitle = '<a href="'.PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'].'">'.$forumTopics[0]['forum_name'].'</a>';
 		$gBitSmarty->assign_by_ref('forumTitle', $linkTitle );
-		$gBitSmarty->assign( 'forumUrl', PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'] );
+		$_template->tpl_vars['forumUrl'] = new Smarty_variable( PHPBB_PKG_URL.'viewforum.php?f='.$module_params['f'] );
 	} else {
-		$gBitSmarty->assign( 'forumUrl', PHPBB_PKG_URL );
+		$_template->tpl_vars['forumUrl'] = new Smarty_variable( PHPBB_PKG_URL );
 	}
 }
 
