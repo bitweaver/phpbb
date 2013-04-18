@@ -1,5 +1,5 @@
 {strip}
-<a class="dropdown-toggle" data-toggle="dropdown" href="#"> {tr}{$packageMenuTitle}{/tr} <b class="caret"></b></a>
+{if $packageMenuTitle}<a class="dropdown-toggle" data-toggle="dropdown" href="#"> {tr}{$packageMenuTitle}{/tr} <b class="caret"></b></a>{/if}
 <ul class="{$packageMenuClass}">
 	<li><a class="item" href="{$smarty.const.PHPBB_PKG_URL}">{tr}Show All{/tr}</a></li>
 	<li><a class="item" href="{$smarty.const.PHPBB_PKG_URL}index.php?c=1">{tr}Only Headers{/tr}</a></li>
